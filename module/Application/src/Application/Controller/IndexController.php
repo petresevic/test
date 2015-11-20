@@ -9,10 +9,6 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        $t = $this->getServiceLocator()->get('Mpay\Service\MpayManager');
-
-        var_dump($t); exit;
-
         /*
         $config = array(
             //'callbackUrl'    => 'http://example.com/callback.php',
