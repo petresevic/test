@@ -1,6 +1,6 @@
 {
     "name": "mpay-backend",
-    "description": "Admin application for mpay service",
+    "description": "Cpanel application for mpay service",
     "license": "BSD-3-Clause",
     "keywords": [
         "framework",
