@@ -2,7 +2,9 @@
 
 return array(
     'modules' => array(
+        'Mpay',
         'Application',
+        'ZendDeveloperTools',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
