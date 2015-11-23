@@ -7,11 +7,13 @@ use Zend\Http\Request;
 class Connector implements ConnectorInterface
 {
     protected $client;
+    protected $cache;
     protected $baseUrl;
     protected $clientId;
     protected $clientSecret;
     protected $grantType;
     protected $accessToken;
+    protected $accessTokenCachePrefix;
 
     public function connect(array $options = array())
     {
@@ -65,6 +67,17 @@ class Connector implements ConnectorInterface
         $this->client = $client;
     }
 
+    /** @return \Mpay\Service\Cache\Cache */
+    public function getCache()
+    {
+        return $this->cache;
+    }
+
+    public function setCache($cache)
+    {
+        $this->cache = $cache;
+    }
+
     public function getBaseUrl()
     {
         return $this->baseUrl;
@@ -113,5 +126,17 @@ class Connector implements ConnectorInterface
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
+
+        $this->getCache()->set($this->getAccessTokenCachePrefix() . $this->getCache()->getSessionId(), $accessToken);
+    }
+
+    public function getAccessTokenCachePrefix()
+    {
+        return $this->accessTokenCachePrefix;
+    }
+
+    public function setAccessTokenCachePrefix($accessTokenCachePrefix)
+    {
+        $this->accessTokenCachePrefix = $accessTokenCachePrefix;
     }
 }

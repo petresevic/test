@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 define('REQUEST_MICROTIME', microtime(true));
 
 chdir(dirname(__DIR__));

@@ -19,11 +19,14 @@ class ConnectorFactory implements FactoryInterface
         $service->setClientId($config['client_id']);
         $service->setClientSecret($config['client_secret']);
         $service->setGrantType($config['grant_type']);
+        $service->setAccessTokenCachePrefix($config['access_token_cache_prefix']);
 
         $client = new Client();
         $client->setAdapter(new Curl());
         $client->setOptions($config['client_options']);
         $service->setClient($client);
+
+        $service->setCache($serviceLocator->get('Mpay\Service\Cache'));
 
         unset($config);
 

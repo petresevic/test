@@ -11,9 +11,28 @@ class LoginController extends AbstractActionController
 
     public function indexAction()
     {
+        //die(__METHOD__);
+
+        $cache = $this->getServiceLocator()->get('Mpay\Service\Cache');
+
+        //echo $cache->getSessionId();
+
+        //$op = $cache->getStorage()->getOptions();
+
+        //var_dump($op);
+
+        //$cache->set('aca', 'skara');
+
+        //echo $cache->get('aca');
+
+        //echo get_class($cache);
+
+        //exit;
+
+
         $username = 'chicoo';
         $password = '000000';
-        $result   = $this->getMpayManager()->login($username, $password);
+        $result   = $this->getMpayManager()->userLogin($username, $password);
 
         $viewModel = new ViewModel();
         $viewModel->setVariables(array(
