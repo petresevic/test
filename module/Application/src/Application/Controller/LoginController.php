@@ -7,19 +7,29 @@ use Zend\View\Model\ViewModel;
 
 class LoginController extends AbstractActionController
 {
+    protected $loginForm;
     protected $mpayManager;
 
     public function indexAction()
     {
         $this->layout('layout/login');
 
-
-        $viewModel = new ViewModel();
-        $viewModel->setVariables(array(
-
-        ));
-
-        return $viewModel;
+        $form = $this->getLoginForm();
+        
+        if ($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+            if ($form->isValid()) {
+                $data = $form->getData();
+                
+                echo '<pre>';
+                var_dump($data); exit;
+                echo '</pre>';
+            }
+        }     
+        
+        return new ViewModel(array(
+            'form' => $form,
+        ));        
     }
 
     /** @return \Mpay\Service\Manager\Manager */
@@ -31,4 +41,13 @@ class LoginController extends AbstractActionController
 
         return $this->mpayManager;
     }
+    
+    public function getLoginForm()
+    {
+        if (! $this->loginForm) {
+            $this->loginForm = $this->getServiceLocator()->get('Application\Form\User\LoginForm');
+        }
+
+        return $this->loginForm;
+    }    
 }

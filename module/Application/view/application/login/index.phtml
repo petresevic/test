@@ -1,37 +1,43 @@
-<pre>
-    <?php var_dump($this->result) ?>
-</pre>
-
-<?php $title = $this->translate('Login - Sign in') ?>
+<?php $title = $this->translate('Sign in') ?>
 
 <?php $this->headTitle($title) ?>
 
-<?php /*
- * 
 <div class="page-inner">
     <div id="main-wrapper">
         <div class="row">
             <div class="col-md-3 center">
                 <div class="login-box">
-                    <a href="index.html" class="logo-name text-lg text-center">Modern</a>
+                    <a class="logo-name text-lg text-center" href="<?php echo $this->url('home') ?>">Mpay</a>
                     <p class="text-center m-t-md">Please login into your account.</p>
-                    <form class="m-t-md" action="index.html">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" required>
-                        </div>
+                    <form class="m-t-md" action="" method="post">
+                        <?php $element  = $this->form->get('username') ?>
+                        <?php $messages = $element->getMessages() ?>
+                        <div class="form-group<?php if (count($messages)) echo ' has-error' ?>">
+                            <div class="col_full">                                
+                                <?php echo $this->formText($element) ?>
+                            </div>  
+                        </div>                        
+                        <?php unset($element, $messages) ?>
+                        
+                        <?php $element  = $this->form->get('password') ?>
+                        <?php $messages = $element->getMessages() ?>
+                        <div class="form-group<?php if (count($messages)) echo ' has-error' ?>">
+                            <div class="col_full">                                
+                                <?php echo $this->formPassword($element) ?>
+                            </div>  
+                        </div>                        
+                        <?php unset($element, $messages) ?>
+                        
                         <button type="submit" class="btn btn-success btn-block">Login</button>
+
+                        <?php /* ?>
                         <a href="forgot.html" class="display-block text-center m-t-md text-sm">Forgot Password?</a>
+                        <?php */ ?>
                         <p class="text-center m-t-xs text-sm">Do not have an account?</p>
                         <a href="register.html" class="btn btn-default btn-block m-t-md">Create an account</a>
                     </form>
-                    <p class="text-center m-t-xs text-sm">2015 &copy; Modern by Steelcoders.</p>
                 </div>
             </div>
-        </div><!-- Row -->
-    </div><!-- Main Wrapper -->
-</div><!-- Page Inner -->
- * 
- */ ?>
+        </div>
+    </div>
+</div>
