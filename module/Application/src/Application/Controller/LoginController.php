@@ -11,6 +11,8 @@ class LoginController extends AbstractActionController
 
     public function indexAction()
     {
+        $this->layout('layout/login');
+        
         $username = 'chicoo';
         $password = '000000';
         $result   = $this->getMpayManager()->login($username, $password);
