@@ -48,6 +48,7 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
+            'Application\Form\User\LoginForm' => 'Application\Form\User\LoginFormFactory',
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
