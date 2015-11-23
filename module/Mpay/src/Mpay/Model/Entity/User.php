@@ -6,7 +6,7 @@ class User
 {
     protected $id;
     protected $username;
-    protected $firtName;
+    protected $firstName;
     protected $lastName;
     protected $email;
 
@@ -30,14 +30,14 @@ class User
         $this->username = $username;
     }
 
-    public function getFirtName()
+    public function getFirstName()
     {
-        return $this->firtName;
+        return $this->firstName;
     }
 
-    public function setFirtName($firtName)
+    public function setFirstName($firstName)
     {
-        $this->firtName = $firtName;
+        $this->firstName = $firstName;
     }
 
     public function getLastName()
