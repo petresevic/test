@@ -17,6 +17,7 @@ return array(
                 ),
             ),
             'access_token_cache_prefix' => 'access-token',
+            'username_cache_prefix'     => 'username',
         ),
         'cache' => array(
             'options' => array(

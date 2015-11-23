@@ -14,6 +14,7 @@ class ManagerFactory implements FactoryInterface
 
         $service = new Manager();
         $service->setConnector($serviceLocator->get('Mpay\Service\Connector'));
+        $service->setCache($serviceLocator->get('Mpay\Service\Cache'));
 
         unset($config);
 
