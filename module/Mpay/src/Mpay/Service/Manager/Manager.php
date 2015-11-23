@@ -2,84 +2,33 @@
 
 namespace Mpay\Service\Manager;
 
-use Zend\Http\Request;
-use Zend\Stdlib\Hydrator\ClassMethods;
 use Mpay\Model\Entity\User;
 
 class Manager implements ManagerInterface
 {
     protected $connector;
     protected $cache;
+    protected $sessionId;
+    protected $accessToken;
+    //protected $username;
+    protected $loggedInUser;
 
-    public function userLogin($username, $password)
+    public function userLogin(User $user, $accessToken)
     {
-        $params = array(
-            'method'           => Request::METHOD_POST,
-            'path_url'         => '/oauth/token',
-            'use_oauth_params' => true,
-            'params'           => array(
-                'username' => $username,
-                'password' => $password,
-            ),
-        );
+        $this->setAccessToken($accessToken);
+        $this->setLoggedInUser($user);
 
-        $status   = false;
-        $response = $this->getConnector()->connect($params);
-
-        if ($response->isOk()) {
-            $data = $this->formatResponse($response->getBody());
-            if (isset($data['access_token']) && $data['access_token']) {
-                $this->getConnector()->setAccessToken($data['access_token']);
-                $this->getConnector()->setUsername($username);
-
-                $this->getCache()->set($this->getConnector()->getAccessTokenCachePrefix() . $this->getCache()->getSessionId(), $this->getConnector()->getAccessToken());
-                $this->getCache()->set($this->getConnector()->getUsernameCachePrefix() . $this->getCache()->getSessionId(), $this->getConnector()->getUsername());
-
-                $status = true;
-            }
-        }
-
-        return $status;
+        $this->getCache()->set($this->getCache()->getAccessTokenCachePrefix() . $this->getSessionId(), $accessToken);
+        $this->getCache()->set($this->getCache()->getUserCachePrefix() . $this->getSessionId(), serialize($user));
     }
 
-    public function userLoadProfile($username, $accessToken)
+    public function userLogout()
     {
-        $user = null;
+        $this->setAccessToken(null);
+        $this->setLoggedInUser(null);
 
-        $params = array(
-            'method'   => Request::METHOD_GET,
-            'path_url' => '/users/' . $username,
-            'params'   => array(
-                'access_token' => $accessToken,
-            ),
-        );
-
-        $response = $this->getConnector()->connect($params);
-
-        if ($response->isOk()) {
-            $data = $this->formatResponse($response->getBody());
-
-            if (isset($data['user'])) {
-                $data     = $data['user'];
-                $hydrator = new ClassMethods();
-                $tmpUser  = $hydrator->hydrate($data, new User());
-
-                if ($tmpUser->getId() && $tmpUser->getUsername()) {
-                    $user = $tmpUser;
-                }
-            }
-        }
-
-        return $user;
-    }
-
-    protected function formatResponse($data)
-    {
-        if (is_string($data)) $data = json_decode($data);
-
-        $data = json_decode(json_encode($data), true);
-
-        return $data;
+        $this->getCache()->set($this->getCache()->getAccessTokenCachePrefix() . $this->getSessionId(), null);
+        $this->getCache()->set($this->getCache()->getUserCachePrefix() . $this->getSessionId(), null);
     }
 
     /** @return \Mpay\Service\Connector\Connector */
@@ -102,5 +51,45 @@ class Manager implements ManagerInterface
     public function setCache($cache)
     {
         $this->cache = $cache;
+    }
+
+    public function getSessionId()
+    {
+        return $this->sessionId;
+    }
+
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
+    }
+
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
+
+//    public function getUsername()
+//    {
+//        return $this->username;
+//    }
+//
+//    public function setUsername($username)
+//    {
+//        $this->username = $username;
+//    }
+
+    public function getLoggedInUser()
+    {
+        return $this->loggedInUser;
+    }
+
+    public function setLoggedInUser($loggedInUser)
+    {
+        $this->loggedInUser = $loggedInUser;
     }
 }

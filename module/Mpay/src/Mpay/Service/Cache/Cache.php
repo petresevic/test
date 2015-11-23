@@ -5,7 +5,9 @@ namespace Mpay\Service\Cache;
 class Cache implements CacheInterface
 {
     protected $storage;
-    protected $sessionId;
+    protected $accessTokenCachePrefix;
+    //protected $usernameCachePrefix;
+    protected $userCachePrefix;
 
     public function get($namespace)
     {
@@ -34,13 +36,33 @@ class Cache implements CacheInterface
         $this->storage = $storage;
     }
 
-    public function getSessionId()
+    public function getAccessTokenCachePrefix()
     {
-        return $this->sessionId;
+        return $this->accessTokenCachePrefix;
     }
 
-    public function setSessionId($sessionId)
+    public function setAccessTokenCachePrefix($accessTokenCachePrefix)
     {
-        $this->sessionId = $sessionId;
+        $this->accessTokenCachePrefix = $accessTokenCachePrefix;
+    }
+
+//    public function getUsernameCachePrefix()
+//    {
+//        return $this->usernameCachePrefix;
+//    }
+//
+//    public function setUsernameCachePrefix($usernameCachePrefix)
+//    {
+//        $this->usernameCachePrefix = $usernameCachePrefix;
+//    }
+
+    public function getUserCachePrefix()
+    {
+        return $this->userCachePrefix;
+    }
+
+    public function setUserCachePrefix($userCachePrefix)
+    {
+        $this->userCachePrefix = $userCachePrefix;
     }
 }
