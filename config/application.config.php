@@ -3,8 +3,9 @@
 return array(
     'modules' => array(
         'Mpay',
+        'Cpanel',
         'Application',
-        'ZendDeveloperTools',
+        'ZendDeveloperTools',        
     ),
     'module_listener_options' => array(
         'module_paths' => array(
