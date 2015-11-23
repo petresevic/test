@@ -1,18 +1,19 @@
 <?php
 
-namespace Mpay\Service\MpayManager;
+namespace Mpay\Service\Manager;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\FactoryInterface;
 
-class MpayManagerFactory implements FactoryInterface
+class ManagerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
         $config = $config['mpay'];
 
-        $service = new MpayManager();
+        $service = new Manager();
+        $service->setConnector($serviceLocator->get('Mpay\Service\Connector'));
 
         unset($config);
 

@@ -6,14 +6,14 @@ use Zend\View\Helper\AbstractHelper;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class MpayManager extends AbstractHelper implements ServiceLocatorAwareInterface
+class Manager extends AbstractHelper implements ServiceLocatorAwareInterface
 {
     protected $serviceLocator;
 
     public function __invoke()
     {
         $helperManager = $this->getServiceLocator();
-        $service       = $helperManager->getServiceLocator()->get('Primo\Service\PrimoManager');
+        $service       = $helperManager->getServiceLocator()->get('Mpay\Service\Manager');
 
         return $service;
     }

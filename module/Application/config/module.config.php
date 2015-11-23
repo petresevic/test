@@ -1,21 +1,30 @@
 <?php
 
-namespace Application;
-
 return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Login' => 'Application\Controller\LoginController',
         ),
     ),
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Literal',
+                'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'login' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Login',
                         'action'     => 'index',
                     ),
                 ),
@@ -49,7 +58,6 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
