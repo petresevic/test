@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <!-- Title -->
-        <title>Modern | Login - Sign in</title>
+        <?php echo $this->headTitle() ?>  
         
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
@@ -39,7 +39,9 @@
     </head>
    <body class="page-login">
         <div class="page-content">
-            <?php echo $this->content; ?>
+            <main class="page-content">
+                <?php echo $this->content; ?>
+            </main>
         </div>
     
     <!-- Javascripts -->
