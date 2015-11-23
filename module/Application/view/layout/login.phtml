@@ -37,13 +37,10 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
-        <section class="main-content">
-            <div class="container">
-                <?php echo $this->content ?>
-            </div>
-        </section>
-    </body>
+   <body class="page-login">
+        <div class="page-content">
+            <?php echo $this->content; ?>
+        </div>
     
     <!-- Javascripts -->
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery/jquery-2.1.4.min.js')) ?>
@@ -57,4 +54,5 @@
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/offcanvasmenueffects/js/classie.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/waves/waves.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/modern.min.js')) ?>
+     </body>
 </html>

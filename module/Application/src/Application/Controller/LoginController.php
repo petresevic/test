@@ -11,6 +11,8 @@ class LoginController extends AbstractActionController
 
     public function indexAction()
     {
+        $this->layout('layout/login');
+
         //die(__METHOD__);
 
         $cache = $this->getServiceLocator()->get('Mpay\Service\Cache');
@@ -28,6 +30,8 @@ class LoginController extends AbstractActionController
         //echo get_class($cache);
 
         //exit;
+
+
 
 
         $username = 'chicoo';
