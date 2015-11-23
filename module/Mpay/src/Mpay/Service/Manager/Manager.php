@@ -2,6 +2,8 @@
 
 namespace Mpay\Service\Manager;
 
+use Zend\Http\Request;
+
 class Manager implements ManagerInterface
 {
     protected $connector;
@@ -10,7 +12,7 @@ class Manager implements ManagerInterface
     public function userLogin($username, $password)
     {
         $params = array(
-            'method'           => 'POST',
+            'method'           => Request::METHOD_POST,
             'path_url'         => '/oauth/token',
             'use_oauth_params' => true,
             'params'           => array(
@@ -36,6 +38,35 @@ class Manager implements ManagerInterface
         }
 
         return $status;
+    }
+
+    public function userLoadProfile($username, $accessToken)
+    {
+        $user = null;
+
+        $params = array(
+            'method'   => Request::METHOD_GET,
+            'path_url' => '/users/' . $username,
+            'params'   => array(
+                'access_token' => $accessToken,
+            ),
+        );
+
+        $response = $this->getConnector()->connect($params);
+
+        //var_dump($response->getBody());
+
+        if ($response->isOk()) {
+
+            //var_dump($response->getBody());
+
+            //$data = $this->formatResponse(json_decode($response->getBody()));
+
+            //var_dump($data);
+
+        }
+
+        return $user;
     }
 
     protected function formatResponse($data)

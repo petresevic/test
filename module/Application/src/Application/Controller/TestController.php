@@ -15,12 +15,16 @@ class TestController extends AbstractActionController
         $connector = $this->getMpayManager()->getConnector();
         $cache = $this->getServiceLocator()->get('Mpay\Service\Cache');
 
-        echo $connector->getUsername();
+        //echo $connector->getAccessToken() . ' | ' . $connector->getUsername();
+
+        //exit;
+
+
+        $t = $this->getMpayManager()->userLoadProfile($connector->getUsername(), $connector->getAccessToken());
+
+
 
         exit;
-
-
-
 
         $username = 'chicoo';
         $password = '000000';

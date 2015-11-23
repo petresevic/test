@@ -28,7 +28,7 @@ return array(
                         'dir_permission'  => 0777,
                         'file_permission' => 0664,
                         'dir_level'       => 3,
-                        'ttl'             => 60,
+                        'ttl'             => 3600,
                     ),
                 ),
             ),
