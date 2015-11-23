@@ -5,6 +5,7 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Login' => 'Application\Controller\LoginController',
+            'Application\Controller\Test'  => 'Application\Controller\TestController',
         ),
     ),
     'router' => array(
@@ -25,6 +26,16 @@ return array(
                     'route'    => '/login',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Login',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'test' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/test',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Test',
                         'action'     => 'index',
                     ),
                 ),

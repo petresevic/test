@@ -16,11 +16,27 @@ return array(
                         CURLOPT_SSL_VERIFYPEER => 0,
                 ),
             ),
+            'access_token_cache_prefix' => 'access-token',
+        ),
+        'cache' => array(
+            'options' => array(
+                'adapter' => array(
+                    'name'    => 'filesystem',
+                    'options' => array(
+                        'cache_dir'       => 'data/cache',
+                        'dir_permission'  => 0777,
+                        'file_permission' => 0664,
+                        'dir_level'       => 3,
+                        'ttl'             => 60,
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'Mpay\Service\Connector' => 'Mpay\Service\Connector\ConnectorFactory',
+            'Mpay\Service\Cache'     => 'Mpay\Service\Cache\CacheFactory',
             'Mpay\Service\Manager'   => 'Mpay\Service\Manager\ManagerFactory',
         ),
     ),

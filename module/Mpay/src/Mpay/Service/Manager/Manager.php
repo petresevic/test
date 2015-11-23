@@ -6,7 +6,7 @@ class Manager implements ManagerInterface
 {
     protected $connector;
 
-    public function login($username, $password)
+    public function userLogin($username, $password)
     {
         $params = array(
             'method'           => 'POST',
