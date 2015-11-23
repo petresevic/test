@@ -3,6 +3,8 @@
 namespace Mpay\Service\Manager;
 
 use Zend\Http\Request;
+use Zend\Stdlib\Hydrator\ClassMethods;
+use Mpay\Model\Entity\User;
 
 class Manager implements ManagerInterface
 {
@@ -25,7 +27,7 @@ class Manager implements ManagerInterface
         $response = $this->getConnector()->connect($params);
 
         if ($response->isOk()) {
-            $data = $this->formatResponse(json_decode($response->getBody()));
+            $data = $this->formatResponse($response->getBody());
             if (isset($data['access_token']) && $data['access_token']) {
                 $this->getConnector()->setAccessToken($data['access_token']);
                 $this->getConnector()->setUsername($username);
@@ -54,16 +56,18 @@ class Manager implements ManagerInterface
 
         $response = $this->getConnector()->connect($params);
 
-        //var_dump($response->getBody());
-
         if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
 
-            //var_dump($response->getBody());
+            if (isset($data['user'])) {
+                $data     = $data['user'];
+                $hydrator = new ClassMethods();
+                $tmpUser  = $hydrator->hydrate($data, new User());
 
-            //$data = $this->formatResponse(json_decode($response->getBody()));
-
-            //var_dump($data);
-
+                if ($tmpUser->getId() && $tmpUser->getUsername()) {
+                    $user = $tmpUser;
+                }
+            }
         }
 
         return $user;
@@ -71,15 +75,11 @@ class Manager implements ManagerInterface
 
     protected function formatResponse($data)
     {
-        if (! is_array($data) && (! $data instanceof \stdClass)) return $data;
+        if (is_string($data)) $data = json_decode($data);
 
-        $formatted = array();
+        $data = json_decode(json_encode($data), true);
 
-        foreach ($data as $key => $value) {
-            $formatted[$key] = $value;
-        }
-
-        return $formatted;
+        return $data;
     }
 
     /** @return \Mpay\Service\Connector\Connector */

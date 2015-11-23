@@ -5,7 +5,6 @@ namespace Mpay\Service\Connector;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\Http\Client;
-use Zend\Http\Client\Adapter\Curl;
 
 class ConnectorFactory implements FactoryInterface
 {
@@ -23,7 +22,6 @@ class ConnectorFactory implements FactoryInterface
         $service->setUsernameCachePrefix($config['username_cache_prefix']);
 
         $client = new Client();
-        $client->setAdapter(new Curl());
         $client->setOptions($config['client_options']);
         $service->setClient($client);
 

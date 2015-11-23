@@ -11,10 +11,7 @@ return array(
             'client_options' => array(
                 'maxredirects' => 2,
                 'timeout'      => 10,
-                    'curloptions' => array(
-                        CURLOPT_SSL_VERIFYHOST => 0,
-                        CURLOPT_SSL_VERIFYPEER => 0,
-                ),
+                'keepalive'    => true,
             ),
             'access_token_cache_prefix' => 'access-token',
             'username_cache_prefix'     => 'username',
