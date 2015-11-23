@@ -12,19 +12,10 @@ class TestController extends AbstractActionController
     public function indexAction()
     {
 
+        $connector = $this->getMpayManager()->getConnector();
         $cache = $this->getServiceLocator()->get('Mpay\Service\Cache');
 
-        //echo $cache->getSessionId();
-
-        //$op = $cache->getStorage()->getOptions();
-
-        //var_dump($op);
-
-        //$cache->set('aca', 'skara');
-
-        //echo $cache->get('aca');
-
-        //echo get_class($cache);
+        echo $connector->getUsername();
 
         exit;
 

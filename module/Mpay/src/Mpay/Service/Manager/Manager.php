@@ -5,6 +5,7 @@ namespace Mpay\Service\Manager;
 class Manager implements ManagerInterface
 {
     protected $connector;
+    protected $cache;
 
     public function userLogin($username, $password)
     {
@@ -25,6 +26,11 @@ class Manager implements ManagerInterface
             $data = $this->formatResponse(json_decode($response->getBody()));
             if (isset($data['access_token']) && $data['access_token']) {
                 $this->getConnector()->setAccessToken($data['access_token']);
+                $this->getConnector()->setUsername($username);
+
+                $this->getCache()->set($this->getConnector()->getAccessTokenCachePrefix() . $this->getCache()->getSessionId(), $this->getConnector()->getAccessToken());
+                $this->getCache()->set($this->getConnector()->getUsernameCachePrefix() . $this->getCache()->getSessionId(), $this->getConnector()->getUsername());
+
                 $status = true;
             }
         }
@@ -54,5 +60,16 @@ class Manager implements ManagerInterface
     public function setConnector($connector)
     {
         $this->connector = $connector;
+    }
+
+    /** @return \Mpay\Service\Cache\Cache */
+    public function getCache()
+    {
+        return $this->cache;
+    }
+
+    public function setCache($cache)
+    {
+        $this->cache = $cache;
     }
 }

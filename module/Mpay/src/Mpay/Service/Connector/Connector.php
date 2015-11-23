@@ -14,6 +14,8 @@ class Connector implements ConnectorInterface
     protected $grantType;
     protected $accessToken;
     protected $accessTokenCachePrefix;
+    protected $username;
+    protected $usernameCachePrefix;
 
     public function connect(array $options = array())
     {
@@ -126,8 +128,6 @@ class Connector implements ConnectorInterface
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
-
-        $this->getCache()->set($this->getAccessTokenCachePrefix() . $this->getCache()->getSessionId(), $accessToken);
     }
 
     public function getAccessTokenCachePrefix()
@@ -138,5 +138,25 @@ class Connector implements ConnectorInterface
     public function setAccessTokenCachePrefix($accessTokenCachePrefix)
     {
         $this->accessTokenCachePrefix = $accessTokenCachePrefix;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    public function getUsernameCachePrefix()
+    {
+        return $this->usernameCachePrefix;
+    }
+
+    public function setUsernameCachePrefix($usernameCachePrefix)
+    {
+        $this->usernameCachePrefix = $usernameCachePrefix;
     }
 }
