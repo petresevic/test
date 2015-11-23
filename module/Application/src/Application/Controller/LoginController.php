@@ -21,13 +21,15 @@ class LoginController extends AbstractActionController
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 $data        = $form->getData();
-                //$accessToken = $this->getMpayManager()->userLogin($data['username'], $data['password']);
                 $accessToken = $this->getMpayManager()->getConnector()->userLogin($data['username'], $data['password']);
                 if ($accessToken) {
                     $user = $this->getMpayManager()->getConnector()->userProfile($data['username'], $accessToken);
                     if ($user && $user->getId()) {
                         $this->getMpayManager()->userLogin($user, $accessToken);
-                        $this->redirect()->toRoute('test-status');
+
+                        return $this->redirect()->toRoute('test-status');
+                    } else {
+                        $error = 'Internal server error';
                     }
                 } else {
                     $error = 'Invalid username / password';
