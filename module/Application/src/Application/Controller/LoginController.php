@@ -14,22 +14,40 @@ class LoginController extends AbstractActionController
     {
         $this->layout('layout/login');
 
-        $form = $this->getLoginForm();
-        
+        $form  = $this->getLoginForm();
+        $error = null;
+
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
-                $data = $form->getData();
-                
-                echo '<pre>';
-                var_dump($data); exit;
-                echo '</pre>';
+                $data        = $form->getData();
+                $accessToken = $this->getMpayManager()->getConnector()->userLogin($data['username'], $data['password']);
+                if ($accessToken) {
+                    $user = $this->getMpayManager()->getConnector()->userProfile($data['username'], $accessToken);
+                    if ($user && $user->getId()) {
+                        $this->getMpayManager()->userLogin($user, $accessToken);
+
+                        return $this->redirect()->toRoute('test-status');
+                    } else {
+                        $error = 'Internal server error';
+                    }
+                } else {
+                    $error = 'Invalid username / password';
+                }
             }
-        }     
-        
+        }
+
         return new ViewModel(array(
-            'form' => $form,
-        ));        
+            'form'  => $form,
+            'error' => $error,
+        ));
+    }
+
+    public function logoutAction()
+    {
+        $this->getMpayManager()->userLogout();
+
+        return $this->redirect()->toRoute('home');
     }
 
     /** @return \Mpay\Service\Manager\Manager */
@@ -41,7 +59,7 @@ class LoginController extends AbstractActionController
 
         return $this->mpayManager;
     }
-    
+
     public function getLoginForm()
     {
         if (! $this->loginForm) {
@@ -49,5 +67,5 @@ class LoginController extends AbstractActionController
         }
 
         return $this->loginForm;
-    }    
+    }
 }

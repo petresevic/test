@@ -11,13 +11,8 @@ return array(
             'client_options' => array(
                 'maxredirects' => 2,
                 'timeout'      => 10,
-                    'curloptions' => array(
-                        CURLOPT_SSL_VERIFYHOST => 0,
-                        CURLOPT_SSL_VERIFYPEER => 0,
-                ),
+                'keepalive'    => true,
             ),
-            'access_token_cache_prefix' => 'access-token',
-            'username_cache_prefix'     => 'username',
         ),
         'cache' => array(
             'options' => array(
@@ -28,10 +23,13 @@ return array(
                         'dir_permission'  => 0777,
                         'file_permission' => 0664,
                         'dir_level'       => 3,
-                        'ttl'             => 60,
+                        'ttl'             => 3600,
                     ),
                 ),
             ),
+            'access_token_cache_prefix' => 'access-token',
+            //'username_cache_prefix'     => 'username',
+            'user_cache_prefix'         => 'user',
         ),
     ),
     'service_manager' => array(

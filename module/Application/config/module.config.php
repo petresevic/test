@@ -31,6 +31,7 @@ return array(
                     ),
                 ),
             ),
+
             'register' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -38,6 +39,15 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Register',
                         'action'     => 'index',
+
+            'logout' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Login',
+                        'action'     => 'logout',
+
                     ),
                 ),
             ),
@@ -48,6 +58,16 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Test',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'test-status' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/test-status',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Test',
+                        'action'     => 'status',
                     ),
                 ),
             ),

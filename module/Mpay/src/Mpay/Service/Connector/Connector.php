@@ -3,6 +3,8 @@
 namespace Mpay\Service\Connector;
 
 use Zend\Http\Request;
+use Zend\Stdlib\Hydrator\ClassMethods;
+use Mpay\Model\Entity\User;
 
 class Connector implements ConnectorInterface
 {
@@ -12,10 +14,60 @@ class Connector implements ConnectorInterface
     protected $clientId;
     protected $clientSecret;
     protected $grantType;
-    protected $accessToken;
-    protected $accessTokenCachePrefix;
-    protected $username;
-    protected $usernameCachePrefix;
+
+    public function userLogin($username, $password)
+    {
+        $params = array(
+            'method'           => Request::METHOD_POST,
+            'path_url'         => '/oauth/token',
+            'use_oauth_params' => true,
+            'params'           => array(
+                'username' => $username,
+                'password' => $password,
+            ),
+        );
+
+        $response = $this->connect($params);
+
+        if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
+            if (isset($data['access_token']) && $data['access_token']) {
+
+                return $data['access_token'];
+            }
+        }
+
+        return null;
+    }
+
+    public function userProfile($username, $accessToken)
+    {
+        $params = array(
+            'method'   => Request::METHOD_GET,
+            'path_url' => '/users/' . $username,
+            'params'   => array(
+                'access_token' => $accessToken,
+            ),
+        );
+
+        $response = $this->connect($params);
+
+        if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
+
+            if (isset($data['user'])) {
+                $data     = $data['user'];
+                $hydrator = new ClassMethods();
+                $user     = $hydrator->hydrate($data, new User());
+                if ($user->getId() && $user->getUsername()) {
+
+                    return $user;
+                }
+            }
+        }
+
+        return null;
+    }
 
     public function connect(array $options = array())
     {
@@ -56,6 +108,15 @@ class Connector implements ConnectorInterface
         }
 
         return $this->getClient()->send();
+    }
+
+    protected function formatResponse($data)
+    {
+        if (is_string($data)) $data = json_decode($data);
+
+        $data = json_decode(json_encode($data), true);
+
+        return $data;
     }
 
     /** @return \Zend\Http\Client */
@@ -118,45 +179,5 @@ class Connector implements ConnectorInterface
     public function setGrantType($grantType)
     {
         $this->grantType = $grantType;
-    }
-
-    public function getAccessToken()
-    {
-        return $this->accessToken;
-    }
-
-    public function setAccessToken($accessToken)
-    {
-        $this->accessToken = $accessToken;
-    }
-
-    public function getAccessTokenCachePrefix()
-    {
-        return $this->accessTokenCachePrefix;
-    }
-
-    public function setAccessTokenCachePrefix($accessTokenCachePrefix)
-    {
-        $this->accessTokenCachePrefix = $accessTokenCachePrefix;
-    }
-
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    public function getUsernameCachePrefix()
-    {
-        return $this->usernameCachePrefix;
-    }
-
-    public function setUsernameCachePrefix($usernameCachePrefix)
-    {
-        $this->usernameCachePrefix = $usernameCachePrefix;
     }
 }

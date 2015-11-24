@@ -16,7 +16,9 @@ class CacheFactory implements FactoryInterface
         $service = new Cache();
         $storage = StorageFactory::factory($config['options']);
         $service->setStorage($storage);
-        $service->setSessionId(session_id());
+        $service->setAccessTokenCachePrefix($config['access_token_cache_prefix']);
+        //$service->setUsernameCachePrefix($config['username_cache_prefix']);
+        $service->setUserCachePrefix($config['user_cache_prefix']);
 
         return $service;
     }

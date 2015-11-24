@@ -11,24 +11,20 @@ class TestController extends AbstractActionController
 
     public function indexAction()
     {
-
-        $connector = $this->getMpayManager()->getConnector();
-        $cache = $this->getServiceLocator()->get('Mpay\Service\Cache');
-
-        echo $connector->getUsername();
-
-        exit;
-
-
-
-
-        $username = 'chicoo';
-        $password = '000000';
-        $result   = $this->getMpayManager()->userLogin($username, $password);
-
         $viewModel = new ViewModel();
         $viewModel->setVariables(array(
-            'result' => $result,
+            //'result' => $result,
+        ));
+
+        return $viewModel;
+    }
+
+    public function statusAction()
+    {
+        $viewModel = new ViewModel();
+        $viewModel->setVariables(array(
+            'accessToken'  => $this->getMpayManager()->getAccessToken(),
+            'loggedInUser' => $this->getMpayManager()->getLoggedInUser(),
         ));
 
         return $viewModel;

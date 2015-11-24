@@ -10,24 +10,31 @@
                     <a class="logo-name text-lg text-center" href="<?php echo $this->url('home') ?>">Mpay</a>
                     <p class="text-center m-t-md">Please login into your account.</p>
                     <form class="m-t-md" action="" method="post">
+                        <?php if ($this->error): ?>
+                            <div class="col_full">
+                                <div class="alert alert-danger">
+                                    <?php echo $this->error ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         <?php $element  = $this->form->get('username') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group<?php if (count($messages)) echo ' has-error' ?>">
-                            <div class="col_full">                                
+                            <div class="col_full">
                                 <?php echo $this->formText($element) ?>
-                            </div>  
-                        </div>                        
+                            </div>
+                        </div>
                         <?php unset($element, $messages) ?>
-                        
+
                         <?php $element  = $this->form->get('password') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group<?php if (count($messages)) echo ' has-error' ?>">
-                            <div class="col_full">                                
+                            <div class="col_full">
                                 <?php echo $this->formPassword($element) ?>
-                            </div>  
-                        </div>                        
+                            </div>
+                        </div>
                         <?php unset($element, $messages) ?>
-                        
+
                         <button type="submit" class="btn btn-success btn-block">Login</button>
 
                         <?php /* ?>
