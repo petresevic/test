@@ -3,9 +3,10 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Login' => 'Application\Controller\LoginController',
-            'Application\Controller\Test'  => 'Application\Controller\TestController',
+            'Application\Controller\Index'    => 'Application\Controller\IndexController',
+            'Application\Controller\Login'    => 'Application\Controller\LoginController',
+            'Application\Controller\Test'     => 'Application\Controller\TestController',
+            'Application\Controller\Register' => 'Application\Controller\RegisterController',
         ),
     ),
     'router' => array(
@@ -30,6 +31,16 @@ return array(
                     ),
                 ),
             ),
+            'register' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/register',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Register',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'test' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -48,7 +59,8 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'factories' => array(
-            'Application\Form\User\LoginForm' => 'Application\Form\User\LoginFormFactory',
+            'Application\Form\User\LoginForm'        => 'Application\Form\User\LoginFormFactory',
+            'Application\Form\Register\RegisterForm' => 'Application\Form\Register\RegisterFormFactory',
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
