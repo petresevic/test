@@ -31,7 +31,6 @@ return array(
                     ),
                 ),
             ),
-
             'register' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -39,7 +38,9 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Register',
                         'action'     => 'index',
-
+                    ),
+                ),
+            ),
             'logout' => array(
                 'type'    => 'Literal',
                 'options' => array(
