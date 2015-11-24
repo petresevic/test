@@ -17,38 +17,38 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        
+
                         <?php $element  = $this->form->get('first_name') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group <?php if (count($messages)) echo 'has-error' ?>">
-                            <div class="col_full">                                
+                            <div class="col_full">
                                 <?php echo $this->formText($element) ?>
-                            </div>  
+                            </div>
                         </div>
                         <?php unset($element, $messages) ?>
 
                         <?php $element  = $this->form->get('last_name') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group <?php if (count($messages)) echo 'has-error' ?>">
-                            <div class="col_full">                                
+                            <div class="col_full">
                                 <?php echo $this->formText($element) ?>
-                            </div>  
+                            </div>
                         </div>
                         <?php unset($element, $messages) ?>
 
                         <?php $element  = $this->form->get('email') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group <?php if (count($messages)) echo 'has-error' ?>">
-                            <div class="col_full">     
+                            <div class="col_full">
                                 <?php echo $this->formText($element) ?>
-                            </div>    
+                            </div>
                         </div>
                         <?php unset($element, $messages) ?>
 
                         <?php $element  = $this->form->get('password') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group <?php if (count($messages)) echo 'has-error' ?>">
-                            <div class="col_full">     
+                            <div class="col_full">
                                 <?php echo $this->formPassword($element) ?>
                             </div>
                         </div>
@@ -57,9 +57,9 @@
                         <?php $element  = $this->form->get('confirm_password') ?>
                         <?php $messages = $element->getMessages() ?>
                         <div class="form-group <?php if (count($messages)) echo 'has-error' ?>">
-                            <div class="col_full">    
+                            <div class="col_full">
                                 <?php echo $this->formPassword($element) ?>
-                            </div>    
+                            </div>
                         </div>
                         <?php unset($element, $messages) ?>
 
@@ -68,7 +68,7 @@
                         </label>
                         <button type="submit" class="btn btn-success btn-block m-t-xs">Register</button>
                         <p class="text-center m-t-xs text-sm">Already have an account?</p>
-                        <a href="login.html" class="btn btn-default btn-block m-t-xs">Login</a>
+                        <a href="<?php echo $this->url('login') ?>" class="btn btn-default btn-block m-t-xs">Login</a>
                     </form>
                     <p class="text-center m-t-xs text-sm">2015 &copy; Modern by Steelcoders.</p>
                 </div>

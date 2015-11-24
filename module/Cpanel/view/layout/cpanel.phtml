@@ -4,15 +4,15 @@
     <head>
         <meta charset="utf-8">
         <!-- Title -->
-        <?php echo $this->headTitle() ?>           
+        <?php echo $this->headTitle() ?>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="description" content="Admin Dashboard Template" />
         <meta name="keywords" content="admin,dashboard" />
         <meta name="author" content="Steelcoders" />
-        
-        <!-- Styles -->       
-        
+
+        <!-- Styles -->
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/pace-master/themes/blue/pace-theme-flash.css') ?>" rel="stylesheet"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/uniform/css/uniform.default.min.css') ?>" rel="stylesheet"/>
@@ -25,15 +25,15 @@
         <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/3d-bold-navigation/css/style.css') ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/slidepushmenus/css/component.css') ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/weather-icons-master/css/weather-icons.min.css') ?>" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/metrojs/MetroJs.min.css') ?>" rel="stylesheet" type="text/css"/>	
-        <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/toastr/toastr.min.css') ?>" rel="stylesheet" type="text/css"/> 
-        
+        <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/metrojs/MetroJs.min.css') ?>" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo $this->basePath('cpanel-assets/assets/plugins/toastr/toastr.min.css') ?>" rel="stylesheet" type="text/css"/>
+
         <!-- Theme Styles -->
         <link href="<?php echo $this->basePath('cpanel-assets/assets/css/modern.min.css') ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/css/themes/green.css') ?>" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/css/custom.css') ?>" rel="stylesheet" type="text/css"/>
-        
-         
+
+
 
     </head>
     <body class="page-header-fixed">
@@ -137,13 +137,13 @@
                     <div class="topmenu-outer">
                         <div class="top-menu">
                             <ul class="nav navbar-nav navbar-left">
-                                <li>		
+                                <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                                 </li>
                                 <li>
                                     <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
                                 </li>
-                                <li>		
+                                <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
                                 </li>
                                 <li class="dropdown">
@@ -154,7 +154,7 @@
                                         <li class="li-group">
                                             <ul class="list-unstyled">
                                                 <li class="no-link" role="presentation">
-                                                    Fixed Header 
+                                                    Fixed Header
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
                                                     </div>
@@ -164,31 +164,31 @@
                                         <li class="li-group">
                                             <ul class="list-unstyled">
                                                 <li class="no-link" role="presentation">
-                                                    Fixed Sidebar 
+                                                    Fixed Sidebar
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right fixed-sidebar-check">
                                                     </div>
                                                 </li>
                                                 <li class="no-link" role="presentation">
-                                                    Horizontal bar 
+                                                    Horizontal bar
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
                                                     </div>
                                                 </li>
                                                 <li class="no-link" role="presentation">
-                                                    Toggle Sidebar 
+                                                    Toggle Sidebar
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
                                                     </div>
                                                 </li>
                                                 <li class="no-link" role="presentation">
-                                                    Compact Menu 
+                                                    Compact Menu
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right compact-menu-check">
                                                     </div>
                                                 </li>
                                                 <li class="no-link" role="presentation">
-                                                    Hover Menu 
+                                                    Hover Menu
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right hover-menu-check">
                                                     </div>
@@ -198,7 +198,7 @@
                                         <li class="li-group">
                                             <ul class="list-unstyled">
                                                 <li class="no-link" role="presentation">
-                                                    Boxed Layout 
+                                                    Boxed Layout
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right boxed-layout-check">
                                                     </div>
@@ -225,7 +225,7 @@
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li>	
+                                <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
                                 </li>
                                 <li class="dropdown">
@@ -334,7 +334,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="<?php echo $this->url('logout') ?>" class="log-out waves-effect waves-button waves-classic">
                                         <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
                                     </a>
                                 </li>
@@ -559,19 +559,19 @@
             </ul>
         </nav>
         <div class="cd-overlay"></div>
-	
+
 
         <!-- Javascripts -->
-        
+
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/pages/dashboard.js')) ?>
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/modern.min.js')) ?>    
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/metrojs/MetroJs.min.js')) ?> 
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/modern.min.js')) ?>
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/metrojs/MetroJs.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/curvedlines/curvedLines.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.tooltip.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.resize.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.symbol.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.time.min.js')) ?>
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.min.js')) ?>       
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/flot/jquery.flot.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/toastr/toastr.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery-counterup/jquery.counterup.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/waypoints/jquery.waypoints.min.js')) ?>
@@ -584,11 +584,11 @@
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/bootstrap/js/bootstrap.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery-blockui/jquery.blockui.js')) ?>
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/pace-master/pace.min.js')) ?>        
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/pace-master/pace.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery-ui/jquery-ui.min.js')) ?>
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery/jquery-2.1.4.min.js')) ?>        
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery/jquery-2.1.4.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/3d-bold-navigation/js/modernizr.js')) ?>
-        <?php echo $this->headScript() ?>        
+        <?php echo $this->headScript() ?>
     </body>
 </html>
