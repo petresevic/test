@@ -1,5 +1,5 @@
 ﻿// Ion.RangeSlider
-// version 2.0.10 Build: 323
+// version 2.0.6 Build: 300
 // © Denis Ineshin, 2015
 // https://github.com/IonDen
 //
@@ -18,7 +18,6 @@
 
     var plugin_count = 0;
 
-    // IE8 fix
     var is_old_ie = (function () {
         var n = navigator.userAgent,
             r = /msie\s\d+/i,
@@ -33,6 +32,8 @@
         }
         return false;
     } ());
+
+    // IE8 fix
     if (!Function.prototype.bind) {
         Function.prototype.bind = function bind(that) {
 
@@ -138,12 +139,11 @@
     // Core
 
     var IonRangeSlider = function (input, options, plugin_count) {
-        this.VERSION = "2.0.10";
+        this.VERSION = "2.0.6";
         this.input = input;
         this.plugin_count = plugin_count;
         this.current_plugin = 0;
         this.calc_count = 0;
-        this.update_tm = 0;
         this.old_from = 0;
         this.old_to = 0;
         this.raf_id = null;
@@ -231,6 +231,7 @@
             disable: $inp.data("disable")
         };
         data.values = data.values && data.values.split(",");
+        options = $.extend(data, options);
 
         // get from and to out of input
         var val = $inp.prop("value");
@@ -244,7 +245,7 @@
                 val[1] = +val[1];
             }
 
-            if (options && options.values && options.values.length) {
+            if (options.values && options.values.length) {
                 data.from = val[0] && options.values.indexOf(val[0]);
                 data.to = val[1] && options.values.indexOf(val[1]);
             } else {
@@ -252,9 +253,6 @@
                 data.to = val[1] && +val[1];
             }
         }
-
-        // JS config has a priority
-        options = $.extend(data, options);
 
         // get config from options
         this.options = $.extend({
@@ -415,6 +413,7 @@
             }
 
             this.updateScene();
+            this.raf_id = requestAnimationFrame(this.updateScene.bind(this));
         },
 
         append: function () {
@@ -447,8 +446,6 @@
                 this.$cache.s_to = this.$cache.cont.find(".to");
                 this.$cache.shad_from = this.$cache.cont.find(".shadow-from");
                 this.$cache.shad_to = this.$cache.cont.find(".shadow-to");
-
-                this.setTopHandler();
             }
 
             if (this.options.hide_from_to) {
@@ -466,19 +463,6 @@
                 this.$cache.cont.removeClass("irs-disabled");
                 this.$cache.input[0].disabled = false;
                 this.bindEvents();
-            }
-        },
-
-        setTopHandler: function () {
-            var min = this.options.min,
-                max = this.options.max,
-                from = this.options.from,
-                to = this.options.to;
-
-            if (from > min && to === max) {
-                this.$cache.s_from.addClass("type_last");
-            } else if (to < max) {
-                this.$cache.s_to.addClass("type_last");
             }
         },
 
@@ -596,8 +580,6 @@
             if (is_old_ie) {
                 $("*").prop("unselectable", false);
             }
-
-            this.updateScene();
         },
 
         pointerDown: function (target, e) {
@@ -647,8 +629,6 @@
             }
 
             this.$cache.line.trigger("focus");
-
-            this.updateScene();
         },
 
         pointerClick: function (target, e) {
@@ -697,7 +677,7 @@
             return true;
         },
 
-        // Move by key. Beta
+        // Move by key beta
         // TODO: refactor than have plenty of time
         moveByKey: function (right) {
             var p = this.coords.p_pointer;
@@ -845,10 +825,6 @@
                     break;
 
                 case "both":
-                    if (this.options.from_fixed || this.options.to_fixed) {
-                        break;
-                    }
-
                     real_x = this.toFixed(real_x + (this.coords.p_handle * 0.1));
 
                     this.coords.p_from_real = this.calcWithStep((real_x - this.coords.p_gap_left) / real_width * 100);
@@ -912,9 +888,9 @@
             } else {
                 var m_point = this.coords.p_from_real + ((this.coords.p_to_real - this.coords.p_from_real) / 2);
                 if (real_x >= m_point) {
-                    return this.options.to_fixed ? "from" : "to";
+                    return "to";
                 } else {
-                    return this.options.from_fixed ? "to" : "from";
+                    return "from";
                 }
             }
         },
@@ -969,25 +945,13 @@
         // Drawings
 
         updateScene: function () {
-            if (this.raf_id) {
-                cancelAnimationFrame(this.raf_id);
-                this.raf_id = null;
-            }
-
-            clearTimeout(this.update_tm);
-            this.update_tm = null;
-
             if (!this.options) {
                 return;
             }
 
             this.drawHandles();
 
-            if (this.is_active) {
-                this.raf_id = requestAnimationFrame(this.updateScene.bind(this));
-            } else {
-                this.update_tm = setTimeout(this.updateScene.bind(this), 300);
-            }
+            this.raf_id = requestAnimationFrame(this.updateScene.bind(this));
         },
 
         drawHandles: function () {
@@ -1153,11 +1117,11 @@
                 } else {
 
                     if (this.options.decorate_both) {
-                        text_single = this.decorate(this._prettify(this.result.from), this.result.from);
+                        text_single = this.decorate(this._prettify(this.result.from));
                         text_single += this.options.values_separator;
-                        text_single += this.decorate(this._prettify(this.result.to), this.result.to);
+                        text_single += this.decorate(this._prettify(this.result.to));
                     } else {
-                        text_single = this.decorate(this._prettify(this.result.from) + this.options.values_separator + this._prettify(this.result.to), this.result.to);
+                        text_single = this.decorate(this._prettify(this.result.from) + this.options.values_separator + this._prettify(this.result.to), this.result.from);
                     }
                     text_from = this.decorate(this._prettify(this.result.from), this.result.from);
                     text_to = this.decorate(this._prettify(this.result.to), this.result.to);
@@ -1288,40 +1252,19 @@
         calcReal: function (percent) {
             var min = this.options.min,
                 max = this.options.max,
-                min_decimals = min.toString().split(".")[1],
-                max_decimals = max.toString().split(".")[1],
-                min_length, max_length,
-                avg_decimals = 0,
                 abs = 0;
-
-            if (min_decimals) {
-                min_length = min_decimals.length;
-                avg_decimals = min_length;
-            }
-            if (max_decimals) {
-                max_length = max_decimals.length;
-                avg_decimals = max_length;
-            }
-            if (min_length && max_length) {
-                avg_decimals = (min_length >= max_length) ? min_length : max_length;
-            }
 
             if (min < 0) {
                 abs = Math.abs(min);
-                min = +(min + abs).toFixed(avg_decimals);
-                max = +(max + abs).toFixed(avg_decimals);
+                min = min + abs;
+                max = max + abs;
             }
 
             var number = ((max - min) / 100 * percent) + min,
-                string = this.options.step.toString().split(".")[1],
-                result;
+                string = this.options.step.toString().split(".")[1];
 
             if (string) {
-                if (number !== min && number !== max) {
-                    number = +number.toFixed(string.length);
-                } else {
-                    number = +number.toFixed(avg_decimals);
-                }
+                number = +number.toFixed(string.length);
             } else {
                 number = number / this.options.step;
                 number = number * this.options.step;
@@ -1330,27 +1273,19 @@
 
             if (abs) {
                 number -= abs;
-                min = this.options.min;
-                max = this.options.max;
+            }
+
+            if (number < this.options.min) {
+                number = this.options.min;
+            } else if (number > this.options.max) {
+                number = this.options.max;
             }
 
             if (string) {
-                if (number !== min && number !== max) {
-                    result = +number.toFixed(string.length);
-                } else {
-                    result = +number.toFixed(avg_decimals);
-                }
+                return +number.toFixed(string.length);
             } else {
-                result = this.toFixed(number);
+                return this.toFixed(number);
             }
-
-            if (result < this.options.min) {
-                result = this.options.min;
-            } else if (result > this.options.max) {
-                result = this.options.max;
-            }
-
-            return result;
         },
 
         calcWithStep: function (percent) {
@@ -1545,28 +1480,16 @@
                 o.to = o.max;
             }
 
-            if (o.type === "single") {
+            if (o.from < o.min || o.from > o.max) {
+                o.from = o.min;
+            }
 
-                if (o.from < o.min) {
-                    o.from = o.min;
-                }
+            if (o.to > o.max || o.to < o.min) {
+                o.to = o.max;
+            }
 
-                if (o.from > o.max) {
-                    o.from = o.max;
-                }
-
-            } else {
-
-                if (o.from < o.min || o.from > o.max) {
-                    o.from = o.min;
-                }
-                if (o.to > o.max || o.to < o.min) {
-                    o.to = o.max;
-                }
-                if (o.from > o.to) {
-                    o.from = o.to;
-                }
-
+            if (o.type === "double" && o.from > o.to) {
+                o.from = o.to;
             }
 
             if (typeof o.step !== "number" || isNaN(o.step) || !o.step || o.step < 0) {
@@ -1735,7 +1658,6 @@
                 local_small_max = small_max;
 
                 big_w = this.toFixed(big_p * i);
-
                 if (big_w > 100) {
                     big_w = 100;
 
@@ -1804,15 +1726,15 @@
             }
 
             if (this.options.force_edges) {
-                if (start[0] < -this.coords.grid_gap) {
-                    start[0] = -this.coords.grid_gap;
+                if (start[0] < this.coords.grid_gap) {
+                    start[0] = this.coords.grid_gap;
                     finish[0] = this.toFixed(start[0] + this.coords.big_p[0]);
 
                     this.coords.big_x[0] = this.coords.grid_gap;
                 }
 
-                if (finish[num - 1] > 100 + this.coords.grid_gap) {
-                    finish[num - 1] = 100 + this.coords.grid_gap;
+                if (finish[num - 1] > 100 - this.coords.grid_gap) {
+                    finish[num - 1] = 100 - this.coords.grid_gap;
                     start[num - 1] = this.toFixed(finish[num - 1] - this.coords.big_p[num - 1]);
 
                     this.coords.big_x[num - 1] = this.toFixed(this.coords.big_p[num - 1] - this.coords.grid_gap);

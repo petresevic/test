@@ -179,11 +179,6 @@ $( document ).ready(function() {
                 hoverable: true,
                 borderWidth: 0,
                 backgroundColor: '#FFF'
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: "%yK",
-                defaultTheme: false
             }
         });
         

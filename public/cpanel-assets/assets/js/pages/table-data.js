@@ -87,8 +87,7 @@ $(document).ready(function() {
     });
     
     // Datatables
-    
-    $('#example').dataTable();
+    $('#example').DataTable();
     $('#example-editable').DataTable();
     
     var table = $('#example2').DataTable({

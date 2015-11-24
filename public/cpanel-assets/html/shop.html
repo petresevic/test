@@ -12,28 +12,24 @@
         <meta name="author" content="Steelcoders" />
         
         <!-- Styles -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
         <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
         <link href="assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet"/>
         <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/product-preview-slider/css/style.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css"/>		
-        <link href="assets/plugins/checkoutconcepts/css/checkout-cornerflat.css" rel="stylesheet" type="text/css" />
         
         <!-- Theme Styles -->
         <link href="assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
         
         <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+        
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +39,7 @@
         <![endif]-->
         
     </head>
-    <body class="page-header-fixed">
+    <body class="page-header-fixed compact-menu page-horizontal-bar">
         <div class="overlay"></div>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
             <h3><span class="pull-left">Chat</span><a href="javascript:void(0);" class="pull-right" id="closeRight"><i class="fa fa-times"></i></a></h3>
@@ -107,18 +103,6 @@
                 </form>
             </div>
 		</nav>
-        <div class="menu-wrap">
-            <nav class="profile-menu">
-                <div class="profile"><img src="assets/images/profile-menu-image.png" width="60" alt="David Green"/><span>David Green</span></div>
-                <div class="profile-menu-list">
-                    <a href="#"><i class="fa fa-star"></i><span>Favorites</span></a>
-                    <a href="#"><i class="fa fa-bell"></i><span>Alerts</span></a>
-                    <a href="#"><i class="fa fa-envelope"></i><span>Messages</span></a>
-                    <a href="#"><i class="fa fa-comment"></i><span>Comments</span></a>
-                </div>
-            </nav>
-            <button class="close-button" id="close-button">Close Menu</button>
-        </div>
         <form class="search-form" action="#" method="GET">
             <div class="input-group">
                 <input type="text" name="search" class="form-control search-input" placeholder="Search...">
@@ -129,7 +113,7 @@
         </form><!-- Search Form -->
         <main class="page-content content-wrap">
             <div class="navbar">
-                <div class="navbar-inner">
+                <div class="navbar-inner container">
                     <div class="sidebar-pusher">
                         <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
                             <i class="fa fa-bars"></i>
@@ -177,12 +161,6 @@
                                                     </div>
                                                 </li>
                                                 <li class="no-link" role="presentation">
-                                                    Horizontal bar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
                                                     Toggle Sidebar 
                                                     <div class="ios-switch pull-right switch-md">
                                                         <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
@@ -191,38 +169,7 @@
                                                 <li class="no-link" role="presentation">
                                                     Compact Menu 
                                                     <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Hover Menu 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right hover-menu-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Boxed Layout 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right boxed-layout-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Choose Theme Color
-                                                    <div class="color-switcher">
-                                                        <a class="colorbox color-blue" href="?theme=blue" title="Blue Theme" data-css="blue"></a>
-                                                        <a class="colorbox color-green" href="?theme=green" title="Green Theme" data-css="green"></a>
-                                                        <a class="colorbox color-red" href="?theme=red" title="Red Theme" data-css="red"></a>
-                                                        <a class="colorbox color-white" href="?theme=white" title="White Theme" data-css="white"></a>
-                                                        <a class="colorbox color-purple" href="?theme=purple" title="purple Theme" data-css="purple"></a>
-                                                        <a class="colorbox color-dark" href="?theme=dark" title="Dark Theme" data-css="dark"></a>
+                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check" checked>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -341,11 +288,6 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
-                                        <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic" id="showRight">
                                         <i class="fa fa-comments"></i>
                                     </a>
@@ -355,36 +297,21 @@
                     </div>
                 </div>
             </div><!-- Navbar -->
-            <div class="page-sidebar sidebar">
-                <div class="page-sidebar-inner slimscroll">
-                    <div class="sidebar-header">
-                        <div class="sidebar-profile">
-                            <a href="javascript:void(0);" id="profile-menu-link">
-                                <div class="sidebar-profile-image">
-                                    <img src="assets/images/profile-menu-image.png" class="img-circle img-responsive" alt="">
-                                </div>
-                                <div class="sidebar-profile-details">
-                                    <span>David Green<br><small>Art Director</small></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+            <div class="page-sidebar sidebar horizontal-bar">
+                <div class="page-sidebar-inner">
                     <ul class="menu accordion-menu">
-                        
-                        <li><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-                        <li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Mailbox</p><span class="arrow"></span></a>
+                        <li class="nav-heading"><span>Navigation</span></li>
+                        <li><a href="index.html"><span class="menu-icon icon-speedometer"></span><p>Dashboard</p></a></li>
+                        <li><a href="profile.html"><span class="menu-icon icon-user"></span><p>Profile</p></a></li>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-envelope-open"></span><p>Mailbox</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="inbox.html">Inbox</a></li>
-                                <li><a href="inbox-alt.html">Inbox Alt</a></li>
                                 <li><a href="message-view.html">View Message</a></li>
-                                <li><a href="message-view-alt.html">View Message Alt</a></li>
                                 <li><a href="compose.html">Compose</a></li>
-                                <li><a href="compose-alt.html">Compose Alt</a></li>
                             </ul>
                         </li>
-                        
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
+                        <li class="nav-heading"><span>Features</span></li>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="ui-alerts.html">Alerts</a></li>
                                 <li><a href="ui-buttons.html">Buttons</a></li>
@@ -401,28 +328,23 @@
                                 <li><a href="ui-tree-view.html">Tree View</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Layouts</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-layers"></span><p>Layouts</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="layout-blank.html">Blank Page</a></li>
-                                <li><a href="layout-boxed.html">Boxed Page</a></li>
-                                <li><a href="layout-horizontal-menu.html">Horizontal Menu</a></li>
-                                <li><a href="layout-horizontal-menu-boxed.html">Boxed &amp; Horizontal Menu</a></li>
-                                <li><a href="layout-horizontal-menu-minimal.html">Horizontal Menu Minimal</a></li>
-                                <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
+                                <li><a href="layout-fixed-sidebar.html">Fixed Menu</a></li>
                                 <li><a href="layout-static-header.html">Static Header</a></li>
                                 <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>
-                                <li><a href="layout-compact-menu.html">Compact Menu</a></li>
-                                <li><a href="layout-hover-menu.html">Hover Menu</a></li>
+                                <li><a href="layout-large-menu.html">Large Menu</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Tables</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-grid"></span><p>Tables</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="table-static.html">Static Tables</a></li>
                                 <li><a href="table-responsive.html">Responsive Tables</a></li>
                                 <li><a href="table-data.html">Data Tables</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Forms</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-note"></span><p>Forms</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="form-elements.html">Form Elements</a></li>
                                 <li><a href="form-wizard.html">Form Wizard</a></li>
@@ -433,7 +355,7 @@
                                 <li><a href="form-x-editable.html">X-editable</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span><p>Charts</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-bar-chart"></span><p>Charts</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="charts-sparkline.html">Sparkline</a></li>
                                 <li><a href="charts-rickshaw.html">Rickshaw</a></li>
@@ -442,7 +364,7 @@
                                 <li><a href="charts-chartjs.html">Chart.js</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-in"></span><p>Login</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-user"></span><p>Login</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="login.html">Login Form</a></li>
                                 <li><a href="login-alt.html">Login Alt</a></li>
@@ -452,13 +374,13 @@
                                 <li><a href="lock-screen.html">Lock Screen</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-map-marker"></span><p>Maps</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-pointer"></span><p>Maps</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="maps-google.html">Google Maps</a></li>
                                 <li><a href="maps-vector.html">Vector Maps</a></li>
                             </ul>
                         </li>
-                        <li class="droplink active open"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Extra</p><span class="arrow"></span></a>
+                        <li class="droplink active open"><a href="#"><span class="menu-icon icon-present"></span><p>Extra</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="404.html">404 Page</a></li>
                                 <li><a href="500.html">500 Page</a></li>
@@ -475,7 +397,7 @@
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-flash"></span><p>Levels</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-folder"></span><p>Levels</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="droplink"><a href="#"><p>Level 1.1</p><span class="arrow"></span></a>
                                     <ul class="sub-menu">
@@ -494,48 +416,19 @@
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
             <div class="page-inner">
-                <div class="checkout">
-                    <a class="checkout__button" href="#">
-                        <span class="checkout__text">
-                            <svg class="checkout__icon" width="89px" height="89px" viewBox="0 0 35 35">
-                                <path fill="#fff" d="M33.623,8.004c-0.185-0.268-0.486-0.434-0.812-0.447L12.573,6.685c-0.581-0.025-1.066,0.423-1.091,1.001 c-0.025,0.578,0.423,1.065,1.001,1.091L31.35,9.589l-3.709,11.575H11.131L8.149,4.924c-0.065-0.355-0.31-0.652-0.646-0.785 L2.618,2.22C2.079,2.01,1.472,2.274,1.26,2.812s0.053,1.146 0.591,1.357l4.343,1.706L9.23,22.4c0.092,0.497,0.524,0.857,1.03,0.857 h0.504l-1.15,3.193c-0.096,0.268-0.057,0.565,0.108,0.798c0.163,0.232,0.429,0.37,0.713,0.37h0.807 c-0.5,0.556-0.807,1.288-0.807,2.093c0,1.732,1.409,3.141,3.14,3.141c1.732,0,3.141-1.408,3.141-3.141c0-0.805-0.307-1.537-0.807-2.093h6.847c-0.5,0.556-0.806,1.288-0.806,2.093c0,1.732,1.407,3.141,3.14,3.141 c1.731,0,3.14-1.408,3.14-3.141c0-0.805-0.307-1.537-0.806-2.093h0.98c0.482,0,0.872-0.391,0.872-0.872s-0.39-0.873-0.872-0.873 H11.675l0.942-2.617h15.786c0.455,0,0.857-0.294,0.996-0.727l4.362-13.608C33.862,8.612,33.811,8.272,33.623,8.004z M13.574,31.108c-0.769,0-1.395-0.626-1.395-1.396s0.626-1.396,1.395-1.396c0.77,0,1.396,0.626,1.396,1.396S14.344,31.108,13.574,31.108z M25.089,31.108c-0.771,0-1.396 0.626-1.396-1.396s0.626-1.396,1.396-1.396c0.77,0,1.396,0.626,1.396,1.396 S25.858,31.108,25.089,31.108z"/>
-                            </svg>
-                        </span>
-                    </a>
-                    <div class="checkout__order">
-                        <div class="checkout__order-inner">
-                            <table class="checkout__summary">
-                                <thead>
-                                    <tr><th>Your Order</th><th>Price</th></tr>
-                                </thead>
-                                <tfoot>
-                                    <tr><th colspan="2">Total <span class="checkout__total">$56.20</span></th></tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr><td>Imitations <span>Mark Lanegan</span></td><td>$9.90</td></tr>
-                                    <tr><td>In The Silence <span>Ásgeir</span></td><td>$5.50</td></tr>
-                                    <tr><td>Out Of Exile <span>Audioslave</span></td><td>$11.00</td></tr>
-                                    <tr><td>London <span>Frank Sinatra</span></td><td>$19.90</td></tr>
-                                    <tr><td>Cure For Pain <span>Morphine</span></td><td>$9.90</td></tr>
-                                </tbody>
-                            </table>
-                            <a href="javascript:void(0);" class="btn btn-default checkout__cancel">Continue Shopping</a>
-                            <a href="javascript:void(0);" class="btn btn-success">Buy</a>
-                            <a href="javascript:void(0);" class="checkout__close checkout__cancel"><i class="icon fa fa-times"></i>Close</a>
-                        </div>
-                    </div>
+                <div class="page-breadcrumb">
+                    <ol class="breadcrumb container">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Extra</a></li>
+                        <li class="active">Shop</li>
+                    </ol>
                 </div>
                 <div class="page-title">
-                    <h3>Shop</h3>
-                    <div class="page-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="#">Extra</a></li>
-                            <li class="active">Shop</li>
-                        </ol>
+                    <div class="container">
+                        <h3>Shop</h3>
                     </div>
                 </div>
-                <div id="main-wrapper">
+                <div id="main-wrapper" class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="cd-gallery">
@@ -823,7 +716,9 @@
                     </div><!-- Row -->
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
-                    <p class="no-s">2015 &copy; Modern by Steelcoders.</p>
+                    <div class="container">
+                        <p class="no-s">2015 &copy; Modern by Steelcoders.</p>
+                    </div>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
@@ -895,15 +790,16 @@
         <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <script src="assets/plugins/switchery/switchery.min.js"></script>
         <script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/classie.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/main.js"></script>
+        <script src="assets/plugins/classie/classie.js"></script>
         <script src="assets/plugins/waves/waves.min.js"></script>
         <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>		
+        <script src="assets/plugins/gridgallery/js/imagesloaded.pkgd.min.js"></script>
+		<script src="assets/plugins/gridgallery/js/masonry.pkgd.min.js"></script>
+		<script src="assets/plugins/gridgallery/js/classie.js"></script>
+		<script src="assets/plugins/gridgallery/js/cbpgridgallery.js"></script>
 		<script src="assets/plugins/product-preview-slider/js/jquery.mobile.min.js"></script>
         <script src="assets/plugins/product-preview-slider/js/main.js"></script>
-        <script src="assets/plugins/toastr/toastr.min.js"></script>
         <script src="assets/js/modern.min.js"></script>
-        <script src="assets/js/pages/shop.js"></script>
         
     </body>
 </html>

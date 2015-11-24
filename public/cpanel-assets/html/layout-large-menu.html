@@ -3,7 +3,7 @@
     <head>
         
         <!-- Title -->
-        <title>Modern | Forms - Form Wizard</title>
+        <title>Modern | Layouts - Large Menu</title>
         
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
@@ -20,9 +20,8 @@
         <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
         <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>	
         
         <!-- Theme Styles -->
         <link href="assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
@@ -39,7 +38,7 @@
         <![endif]-->
         
     </head>
-    <body class="page-header-fixed compact-menu page-horizontal-bar">
+    <body class="page-header-fixed page-horizontal-bar">
         <div class="overlay"></div>
         <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
             <h3><span class="pull-left">Chat</span><a href="javascript:void(0);" class="pull-right" id="closeRight"><i class="fa fa-times"></i></a></h3>
@@ -169,7 +168,7 @@
                                                 <li class="no-link" role="presentation">
                                                     Compact Menu 
                                                     <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check" checked>
+                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -328,13 +327,13 @@
                                 <li><a href="ui-tree-view.html">Tree View</a></li>
                             </ul>
                         </li>
-                        <li class="droplink"><a href="#"><span class="menu-icon icon-layers"></span><p>Layouts</p><span class="arrow"></span></a>
+                        <li class="droplink active open"><a href="#"><span class="menu-icon icon-layers"></span><p>Layouts</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="layout-blank.html">Blank Page</a></li>
                                 <li><a href="layout-fixed-sidebar.html">Fixed Menu</a></li>
                                 <li><a href="layout-static-header.html">Static Header</a></li>
                                 <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>
-                                <li><a href="layout-large-menu.html">Large Menu</a></li>
+                                <li class="active"><a href="layout-large-menu.html">Large Menu</a></li>
                             </ul>
                         </li>
                         <li class="droplink"><a href="#"><span class="menu-icon icon-grid"></span><p>Tables</p><span class="arrow"></span></a>
@@ -344,10 +343,10 @@
                                 <li><a href="table-data.html">Data Tables</a></li>
                             </ul>
                         </li>
-                        <li class="droplink active open"><a href="#"><span class="menu-icon icon-note"></span><p>Forms</p><span class="arrow"></span></a>
+                        <li class="droplink"><a href="#"><span class="menu-icon icon-note"></span><p>Forms</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="form-elements.html">Form Elements</a></li>
-                                <li class="active"><a href="form-wizard.html">Form Wizard</a></li>
+                                <li><a href="form-wizard.html">Form Wizard</a></li>
                                 <li><a href="form-upload.html">File Upload</a></li>
                                 <li><a href="form-image-crop.html">Image Crop</a></li>
                                 <li><a href="form-image-zoom.html">Image Zoom</a></li>
@@ -419,13 +418,13 @@
                 <div class="page-breadcrumb">
                     <ol class="breadcrumb container">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Forms</a></li>
-                        <li class="active">Form Wizard</li>
+                        <li><a href="#">Layouts</a></li>
+                        <li class="active">Large Menu</li>
                     </ol>
                 </div>
                 <div class="page-title">
                     <div class="container">
-                        <h3>Form Wizard</h3>
+                        <h3>Large Menu</h3>
                     </div>
                 </div>
                 <div id="main-wrapper" class="container">
@@ -433,132 +432,21 @@
                         <div class="col-md-12">
                             <div class="panel panel-white">
                                 <div class="panel-body">
-                                    <div id="rootwizard">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-user m-r-xs"></i>Personal Info</a></li>
-                                            <li role="presentation"><a href="#tab2" data-toggle="tab"><i class="fa fa-truck m-r-xs"></i>Product Info</a></li>
-                                            <li role="presentation"><a href="#tab3" data-toggle="tab"><i class="fa fa-truck m-r-xs"></i>Payment</a></li>
-                                            <li role="presentation"><a href="#tab4" data-toggle="tab"><i class="fa fa-check m-r-xs"></i>Finish</a></li>
-                                        </ul>
-                          
-                                    
-                                        <div class="progress progress-sm m-t-sm">
-                                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                            </div>
-                                        </div>
-                                        <form id="wizardForm">
-                                            <div class="tab-content">
-                                                <div class="tab-pane active fade in" id="tab1">
-                                                    <div class="row m-b-lg">
-                                                        <div class="col-md-6">
-                                                            <div class="row">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="exampleInputName">First Name</label>
-                                                                    <input type="text" class="form-control" name="exampleInputName" id="exampleInputName" placeholder="First Name">
-                                                                </div>
-                                                                <div class="form-group  col-md-6">
-                                                                    <label for="exampleInputName2">Last Name</label>
-                                                                    <input type="text" class="form-control col-md-6" name="exampleInputName2" id="exampleInputName2" placeholder="Last Name" >
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="exampleInputEmail">Email address</label>
-                                                                    <input type="email" class="form-control" name="exampleInputEmail" id="exampleInputEmail" placeholder="Enter email" >
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="exampleInputPassword1">Password</label>
-                                                                    <input type="password" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1" placeholder="Password" >
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="exampleInputPassword2">Confirm Password</label>
-                                                                    <input type="password" class="form-control" name="exampleInputPassword2" id="exampleInputPassword2" placeholder="Confirm Password">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <h3>Personal Info</h3>
-                                                            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.</p>
-                                                            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="tab2">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <img src="assets/images/envato-logo.png" width="250" alt="">
-                                                            <div class="m-t-md">
-                                                                <address>
-                                                                    <strong>Twitter, Inc.</strong><br>
-                                                                    795 Folsom Ave, Suite 600<br>
-                                                                    San Francisco, CA 94107<br>
-                                                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                                                </address>
-                                                                <address>
-                                                                    <strong>Full Name</strong><br>
-                                                                    <a href="mailto:#">first.last@example.com</a>
-                                                                </address>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputProductName">Product Name</label>
-                                                                <input type="text" class="form-control" name="exampleInputProductName" id="exampleInputProductName" placeholder="Product Name" >
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputProductId">Product ID</label>
-                                                                <input type="text" class="form-control" name="exampleInputProductId" id="exampleInputProductId" placeholder="Product ID">
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputQuantity">Quantity</label>
-                                                                <input type="number" min="1" max="5" class="form-control" name="exampleInputQuantity" id="exampleInputQuantity" placeholder="Quantity">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="tab3">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputCard">Card Number</label>
-                                                                <div class="row">
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" name="exampleInputCard" id="exampleInputCard" placeholder="Card Number">
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <input type="text" class="form-control col-md-4" name="exampleInputSecurity" id="exampleInputSecurity" placeholder="Security Code">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputHolder">Card Holders Name</label>
-                                                                <input type="text" class="form-control" name="exampleInputHolder" id="exampleInputHolder" placeholder="Card Holders Name">
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputExpiration">Expiration</label>
-                                                                <input type="text" class="form-control date-picker" name="exampleInputExpiration" id="exampleInputExpiration" placeholder="Expiration">
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label for="exampleInputCsv">CSV</label>
-                                                                <input type="text" class="form-control" name="exampleInputCsv" id="exampleInputCsv" placeholder="CSV">
-                                                            </div>
-                                                            <div class="form-group col-md-12">
-                                                                <label class="f-s-12">By pressing Next You will Agree to the Payment <a href="#">Terms & Conditions</a></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="tab4">
-                                                    <h2 class="no-s">Thank You !</h2>
-                                                    <div class="alert alert-info m-t-sm m-b-lg" role="alert">
-                                                        Congratulations ! You got the last step.
-                                                    </div>
-                                                </div>
-                                                <ul class="pager wizard">
-                                                    <li class="previous"><a href="#" class="btn btn-default">Previous</a></li>
-                                                    <li class="next"><a href="#" class="btn btn-default">Next</a></li>
-                                                </ul>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat faucibus dolor ac vestibulum. Donec fermentum sapien ac nisl accumsan, et porta orci semper. Vestibulum pellentesque sapien lectus, nec fringilla diam malesuada ut. Quisque at varius neque. Fusce ac nunc commodo, lobortis orci a, tincidunt enim. Nullam sit amet maximus erat, ut vulputate risus. Sed sed quam vel magna posuere rhoncus. Phasellus et purus eget leo mattis convallis et eget ante. Ut nec dictum odio. Cras sollicitudin in leo nec tincidunt. Integer venenatis justo sit amet leo interdum ullamcorper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Pellentesque et interdum tellus. Nam consequat accumsan diam id pulvinar. Integer pulvinar aliquam justo et ultrices. Integer accumsan, urna at tristique vestibulum, nisl turpis tempor odio, non commodo est ipsum quis dolor. Vivamus ut vulputate enim. Aenean eleifend pulvinar maximus. Curabitur maximus nunc imperdiet orci ultrices porttitor. Vivamus a pulvinar arcu, in feugiat leo. Nam et accumsan ipsum. Pellentesque scelerisque sem in risus ornare tincidunt.
+
+Vivamus ex magna, aliquam vitae consequat non, rutrum a risus. Nulla aliquam risus ac molestie aliquet. Cras sem ligula, pretium sed efficitur id, pulvinar eget quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam lorem nulla, varius vel lectus ut, mollis pretium diam. Aliquam auctor est imperdiet felis aliquam venenatis. Nulla nec efficitur lacus. Etiam tincidunt libero eget ipsum iaculis suscipit. Vestibulum mauris quam, congue at libero id, porttitor tristique purus.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque bibendum, risus suscipit iaculis pellentesque, elit orci bibendum nunc, eu pretium metus augue ut risus. Morbi congue quis risus in egestas. Cras venenatis mi ac auctor iaculis. Mauris quis leo porta, gravida odio at, molestie lorem. Aenean dui felis, varius vitae neque nec, egestas vehicula ligula. Praesent luctus et quam ut facilisis. Cras at pretium metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec accumsan nibh sit amet odio volutpat lacinia. Nam venenatis quis diam at cursus.
+
+Sed a eros eu nunc malesuada lacinia vitae non velit. Nulla urna risus, feugiat sed dui eget, accumsan sodales ante. Morbi lorem sem, venenatis et euismod sed, tristique at arcu. Cras eu dolor et magna dignissim luctus. Etiam ex nunc, rhoncus ac gravida fringilla, vulputate at diam. Ut fringilla leo a mi molestie, id laoreet nunc sodales. Nunc eu dignissim neque. Donec tincidunt iaculis mauris, aliquet pulvinar nisl auctor et. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+Sed at sem tempor, scelerisque orci ac, molestie libero. Aliquam eget suscipit justo. Aenean condimentum risus faucibus velit pellentesque auctor. Aenean rutrum, odio pulvinar molestie pharetra, neque leo auctor nisl, id tempus tellus dolor ac lectus. Donec quis consequat ligula. Donec ultrices neque velit, eu pharetra neque lacinia ut. Pellentesque mi neque, tincidunt pellentesque vehicula eget, hendrerit non velit. Suspendisse aliquet sollicitudin erat sit amet ullamcorper. Curabitur vel iaculis velit, nec elementum dui. Phasellus erat ex, aliquet id lorem eu, eleifend convallis sem.
+
+Vivamus quis magna suscipit lorem cursus tincidunt. Aenean a placerat mi. Praesent feugiat libero enim, at venenatis quam cursus vel. Integer ac lectus risus. Phasellus pellentesque ante massa, eu vulputate mauris venenatis at. Nullam vestibulum mi ac elit sollicitudin, id dapibus erat vestibulum. Integer varius vel mauris ut bibendum. Cras sed dolor vel enim tincidunt molestie vel blandit libero. In ipsum leo, sodales ac vehicula a, accumsan nec lectus. Mauris a enim sit amet lorem elementum facilisis vel in neque. Mauris enim enim, vehicula in nisl vitae, pulvinar efficitur urna. Proin aliquam vitae ipsum vel tincidunt. Phasellus aliquam sapien magna, ut dignissim dui elementum in.
+
+Nam elementum, quam vulputate ultrices varius, mi sem lobortis mi, bibendum condimentum lectus quam id tellus. Pellentesque orci risus, suscipit in congue eu, laoreet ut velit. Proin congue ornare facilisis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec purus ligula, facilisis non gravida et, iaculis non leo. Curabitur id nunc nec mauris euismod egestas. Vestibulum rutrum cursus tortor, vel lobortis nisl dignissim quis. Suspendisse justo dui, egestas quis metus eu, auctor convallis felis. Nunc iaculis nibh elit, vehicula faucibus neque mollis a. Maecenas suscipit consequat augue id scelerisque. Phasellus at interdum lectus. Quisque congue orci orci, non blandit dui sollicitudin nec. Duis rutrum, libero quis fermentum maximus, tortor arcu pretium velit, a ultricies tellus orci ac urna. Ut quis arcu sapien. Maecenas faucibus nunc interdum condimentum finibus.</p>
                                 </div>
                             </div>
                         </div>
@@ -642,11 +530,7 @@
         <script src="assets/plugins/classie/classie.js"></script>
         <script src="assets/plugins/waves/waves.min.js"></script>
         <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
-        <script src="assets/plugins/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-        <script src="assets/plugins/jquery-validation/jquery.validate.min.js"></script>
-        <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
         <script src="assets/js/modern.min.js"></script>
-        <script src="assets/js/pages/form-wizard.js"></script>
         
     </body>
 </html>
