@@ -12,7 +12,7 @@ class LoginController extends AbstractActionController
 
     public function indexAction()
     {
-        $this->layout('layout/login');
+        if ($this->getMpayManager()->getAccessToken()) return $this->redirect()->toRoute('cpanel');
 
         $form  = $this->getLoginForm();
         $error = null;
@@ -27,7 +27,9 @@ class LoginController extends AbstractActionController
                     if ($user && $user->getId()) {
                         $this->getMpayManager()->userLogin($user, $accessToken);
 
-                        return $this->redirect()->toRoute('test-status');
+                        $url = $this->getRequest()->getHeader('Referer')->getUri();
+
+                        return (substr($url, -5) == 'login') ? $this->redirect()->toRoute('cpanel') : $this->redirect()->toUrl($url);
                     } else {
                         $error = 'Internal server error';
                     }
@@ -36,6 +38,8 @@ class LoginController extends AbstractActionController
                 }
             }
         }
+
+        $this->layout('layout/login');
 
         return new ViewModel(array(
             'form'  => $form,
