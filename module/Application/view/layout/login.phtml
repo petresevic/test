@@ -25,6 +25,8 @@
         <link href="<?php echo $this->basePath('cpanel-assets/assets/css/modern.min.css') ?>" rel="stylesheet" type="text/css"/>
         <link href="<?php echo $this->basePath('cpanel-assets/assets/css/custom.css') ?>" class="theme-color" rel="stylesheet" type="text/css"/>       
 
+        <script src="<?php echo $this->basePath('cpanel-assets/assets/plugins/3d-bold-navigation/js/modernizr.js') ?>"></script>
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -52,7 +54,8 @@
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/pace-master/pace.min.js')) ?>                  
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery-ui/jquery-ui.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/jquery/jquery-2.1.4.min.js')) ?>        
-        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/3d-bold-navigation/js/modernizr.js')) ?>       
+        <?php //$this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/3d-bold-navigation/js/modernizr.js')) ?>      
+        
         <?php echo $this->headScript() ?>
     </body>
 </html>

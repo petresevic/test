@@ -15,17 +15,6 @@ class LoginFormInputFilter extends InputFilter {
                 array('name' => 'StringTrim'),
                 array('name' => 'StripTags'),
             ),
-            'validators' => array(
-                array(
-                    'name' => 'NotEmpty',
-                    'break_chain_on_failure' => true,
-                    'options' => array(
-                        'messages' => array(
-                            \Zend\Validator\NotEmpty::IS_EMPTY => 'Value is required',
-                        ),
-                    ),
-                ),
-            ),
         ));
 
         $this->add(array(

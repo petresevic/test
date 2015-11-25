@@ -14,7 +14,7 @@ class Manager extends AbstractHelper implements ServiceLocatorAwareInterface
     {
         $helperManager = $this->getServiceLocator();
         $service       = $helperManager->getServiceLocator()->get('Mpay\Service\Manager');
-
+     
         return $service;
     }
 
