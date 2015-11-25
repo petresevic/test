@@ -28,7 +28,6 @@ return array(
                 ),
             ),
             'access_token_cache_prefix' => 'access-token',
-            //'username_cache_prefix'     => 'username',
             'user_cache_prefix'         => 'user',
         ),
     ),

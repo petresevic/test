@@ -25,9 +25,6 @@ class ManagerFactory implements FactoryInterface
         if ($cachedAccessToken) $service->setAccessToken($cachedAccessToken);
         if ($cachedLoggedInUser && $cachedLoggedInUser->getId()) $service->setLoggedInUser($cachedLoggedInUser);
 
-        //$cachedUsername = $cache->get($service->getUsernameCachePrefix() . $cache->getSessionId());
-        //if ($cachedUsername) $service->setUsername($cachedUsername);
-
         unset($config);
 
         return $service;
