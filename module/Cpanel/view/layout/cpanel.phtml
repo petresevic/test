@@ -125,7 +125,7 @@
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
+                                    <?php /*<a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>*/?>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
@@ -310,8 +310,13 @@
                 <div class="page-sidebar-inner">
                     <ul class="menu accordion-menu">
                         <li class="nav-heading"><span>Navigation</span></li>
+                        <?php /*
                         <li class="active"><a href="index.html"><span class="menu-icon icon-speedometer"></span><p>Dashboard</p></a></li>
+                        */ ?>
+                        <?php /*
                         <li><a href="profile.html"><span class="menu-icon icon-user"></span><p>Profile</p></a></li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-envelope-open"></span><p>Mailbox</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="inbox.html">Inbox</a></li>
@@ -319,6 +324,8 @@
                                 <li><a href="compose.html">Compose</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="nav-heading"><span>Features</span></li>
                         <li class="droplink"><a href="#"><span class="menu-icon icon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
@@ -337,6 +344,8 @@
                                 <li><a href="ui-tree-view.html">Tree View</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-layers"></span><p>Layers</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="layout-blank.html">Blank Page</a></li>
@@ -346,6 +355,8 @@
                                 <li><a href="layout-large-menu.html">Large Menu</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-grid"></span><p>Tables</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="table-static.html">Static Tables</a></li>
@@ -353,6 +364,8 @@
                                 <li><a href="table-data.html">Data Tables</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-note"></span><p>Forms</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="form-elements.html">Form Elements</a></li>
@@ -364,6 +377,8 @@
                                 <li><a href="form-x-editable.html">X-editable</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-bar-chart"></span><p>Charts</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="charts-sparkline.html">Sparkline</a></li>
@@ -373,6 +388,8 @@
                                 <li><a href="charts-chartjs.html">Chart.js</a></li>
                             </ul>
                         </li>
+                         */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-user"></span><p>Login</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="login.html">Login Form</a></li>
@@ -383,12 +400,16 @@
                                 <li><a href="lock-screen.html">Lock Screen</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-pointer"></span><p>Maps</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="maps-google.html">Google Maps</a></li>
                                 <li><a href="maps-vector.html">Vector Maps</a></li>
                             </ul>
                         </li>
+                        */?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-present"></span><p>Extra</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="404.html">404 Page</a></li>
@@ -406,6 +427,8 @@
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </li>
+                        */ ?>
+                        <?php /*
                         <li class="droplink"><a href="#"><span class="menu-icon icon-folder"></span><p>Levels</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li class="droplink"><a href="#"><p>Level 1.1</p><span class="arrow"></span></a>
@@ -421,13 +444,23 @@
                                 <li><a href="#">Level 1.2</a></li>
                             </ul>
                         </li>
+                        */?>
                     </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
             <div class="page-inner">
-                <div class="page-breadcrumb">                    
+                <div class="page-breadcrumb">                       
+                    <?php $this->breadcrumbs = isset($this->breadcrumbs) ? $this->breadcrumbs : array() ?>
+                    <?php echo $this->partial('cpanel/breadcrumbs.phtml', array('breadcrumbs' => $this->breadcrumbs)) ?>                     
                 </div>
-                <div class="page-title">                    
+                <div class="page-title">
+                    <div class="container">
+                        <h3>
+                            <?php $titleChinks       = $this->headTitle() ?>
+                            <?php $title             = (isset($titleChinks[0]) && $titleChinks[0]) ? $titleChinks[0] : 'Cpanel' ?>
+                            <?php echo $title ?>
+                        </h3>
+                    </div>    
                 </div>
                 <div id="main-wrapper" class="container">              
                     <?php echo $this->content; ?>
@@ -439,6 +472,8 @@
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
+        
+        <?php /* <!-- Fa fa-diamond -->
         <nav class="cd-nav-container" id="cd-nav">
             <header>
                 <h3>Navigation</h3>
@@ -495,6 +530,7 @@
                 </li>
             </ul>
         </nav>
+        */?>
         <div class="cd-overlay"></div>
 
         <!-- Javascripts -->
