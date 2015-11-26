@@ -2,10 +2,13 @@
 
 namespace Mpay\Model\Entity;
 
-class User
+use Mpay\Model\UserInterface;
+
+class User implements UserInterface
 {
     protected $id;
     protected $username;
+    protected $role;
     protected $firstName;
     protected $lastName;
     protected $email;
@@ -28,6 +31,16 @@ class User
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     public function getFirstName()

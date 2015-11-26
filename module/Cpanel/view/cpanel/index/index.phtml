@@ -5,6 +5,11 @@
 <section id="content">
     <div id="main-wrapper">
         <div class="row">
+
+            <?php $user = $this->mpayManager()->getLoggedInUser() ?>
+            <pre><?php var_dump($user) ?></pre>
+
+            <?php /*
             <div class="col-lg-9 col-md-12">
                 <div class="panel panel-white">
                     <div class="row">
@@ -208,7 +213,7 @@
                         <h4 class="panel-title">Project Stats</h4>
                     </div>
                     <div class="panel-body">
-                        <div class="table-responsive project-stats">  
+                        <div class="table-responsive project-stats">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -298,6 +303,8 @@
                     </div>
                 </div>
             </div>
+             *
+             */ ?>
         </div>
     </div>
 </section>
