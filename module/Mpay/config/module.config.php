@@ -35,6 +35,7 @@ return array(
         'factories' => array(
             'Mpay\Service\Connector' => 'Mpay\Service\Connector\ConnectorFactory',
             'Mpay\Service\Cache'     => 'Mpay\Service\Cache\CacheFactory',
+            'Mpay\Service\Acl'       => 'Mpay\Service\Acl\AclFactory',
             'Mpay\Service\Manager'   => 'Mpay\Service\Manager\ManagerFactory',
         ),
     ),

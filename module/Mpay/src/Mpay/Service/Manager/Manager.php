@@ -2,15 +2,25 @@
 
 namespace Mpay\Service\Manager;
 
+use Mpay\Service\Acl\AclAwareInterface;
+use Mpay\Service\Acl\AclInterface;
+use Mpay\Service\Cache\CacheAwareInterface;
+use Mpay\Service\Cache\CacheInterface;
+use Mpay\Service\Connector\ConnectorAwareInterface;
+use Mpay\Service\Connector\ConnectorInterface;
 use Mpay\Model\Entity\User;
 
-class Manager implements ManagerInterface
+class Manager implements ManagerInterface,
+                         AclAwareInterface,
+                         CacheAwareInterface,
+                         ConnectorAwareInterface
+
 {
-    protected $connector;
+    protected $acl;
     protected $cache;
+    protected $connector;
     protected $sessionId;
     protected $accessToken;
-    //protected $username;
     protected $loggedInUser;
 
     public function userLogin(User $user, $accessToken)
@@ -31,26 +41,34 @@ class Manager implements ManagerInterface
         $this->getCache()->set($this->getCache()->getUserCachePrefix() . $this->getSessionId(), null);
     }
 
-    /** @return \Mpay\Service\Connector\Connector */
-    public function getConnector()
+    public function getAcl()
     {
-        return $this->connector;
+        return $this->acl;
     }
 
-    public function setConnector($connector)
+    public function setAcl(AclInterface $acl)
     {
-        $this->connector = $connector;
+        $this->acl = $acl;
     }
 
-    /** @return \Mpay\Service\Cache\Cache */
     public function getCache()
     {
         return $this->cache;
     }
 
-    public function setCache($cache)
+    public function setCache(CacheInterface $cache)
     {
         $this->cache = $cache;
+    }
+
+    public function getConnector()
+    {
+        return $this->connector;
+    }
+
+    public function setConnector(ConnectorInterface $connector)
+    {
+        $this->connector = $connector;
     }
 
     public function getSessionId()
@@ -72,7 +90,7 @@ class Manager implements ManagerInterface
     {
         $this->accessToken = $accessToken;
     }
-    
+
     public function getLoggedInUser()
     {
         return $this->loggedInUser;

@@ -13,11 +13,9 @@ class ManagerFactory implements FactoryInterface
         $config = $config['mpay'];
 
         $service   = new Manager();
-        $connector = $serviceLocator->get('Mpay\Service\Connector');
-        $service->setConnector($connector);
-        $cache = $serviceLocator->get('Mpay\Service\Cache');
-        $service->setCache($cache);
         $service->setSessionId(session_id());
+
+        $cache = $serviceLocator->get('Mpay\Service\Cache');
 
         $cachedAccessToken  = $cache->get($cache->getAccessTokenCachePrefix() . $service->getSessionId());
         $cachedLoggedInUser = unserialize($cache->get($cache->getUserCachePrefix() . $service->getSessionId()));
