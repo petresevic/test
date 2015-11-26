@@ -313,14 +313,16 @@
             </div><!-- Page Sidebar -->
             <div class="page-inner">
                 <div class="page-breadcrumb">
-                    <?php $this->breadcrumbs = isset($this->breadcrumbs) ? $this->breadcrumbs : array() ?>
-                    <?php echo $this->partial('cpanel/breadcrumbs.phtml', array('breadcrumbs' => $this->breadcrumbs)) ?>
+                    <?php echo $this->navigation('cpanel-nav')
+                              ->breadcrumbs()
+                              ->setMinDepth(0)
+                              ->setPartial('cpanel/breadcrumbs.phtml') ?>
                 </div>
                 <div class="page-title">
                     <div class="container">
                         <h3>
-                            <?php $titleChinks       = $this->headTitle() ?>
-                            <?php $title             = (isset($titleChinks[0]) && $titleChinks[0]) ? $titleChinks[0] : 'Cpanel' ?>
+                            <?php $titleChinks = $this->headTitle() ?>
+                            <?php $title       = (isset($titleChinks[0]) && $titleChinks[0]) ? $titleChinks[0] : 'Cpanel' ?>
                             <?php echo $title ?>
                         </h3>
                     </div>

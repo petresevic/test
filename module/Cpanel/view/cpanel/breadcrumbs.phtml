@@ -1,19 +1,15 @@
-<?php if (count($this->breadcrumbs)): ?>
-    <ol class="breadcrumb container">
-        <?php /*<li><a href="<?php echo $this->url('cpanel') ?>"><?php echo $this->translate('Home') ?></a></li>*/ ?>
+<?php if (count($this->pages)): ?>
+    <ol class="container breadcrumb">
+        <li>
+            <a href="<?php echo $this->url('cpanel') ?>"><?php echo $this->translate('Cpanel') ?></a>
+        </li>
         <?php $counter = 0 ?>
-        <?php foreach ($this->breadcrumbs as $url => $label): ?>
-            <li<?php if ($counter === (count($breadcrumbs) - 1)) echo ' class="active"' ?>>
-                <?php if ($url): ?>
-                    <a href="<?php echo $url ?>">
-                    <?php endif; ?>
-                    <?php echo $label ?>
-                    <?php if ($url): ?>
-                    </a>
-                <?php endif; ?>
-                <?php $counter ++ ?>
+        <?php foreach ($this->pages as $index => $page): ?>
+            <?php if ($page->getLabel() == 'Cpanel' || strtolower($page->getLabel()) == 'hidden') continue; ?>
+            <li<?php if ($counter === (count($this->pages) - 1)) echo ' class="active"' ?>>
+                <a href="<?php echo $page->getHref() ?>"><?php echo $this->translate($page->getLabel()) ?></a>
             </li>
+            <?php $counter ++ ?>
         <?php endforeach; ?>
     </ol>
 <?php endif; ?>
-
