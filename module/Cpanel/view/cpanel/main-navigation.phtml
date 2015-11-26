@@ -1,0 +1,35 @@
+<?php $pages = $this->navigation->getPages() ?>
+
+<ul class="menu accordion-menu">
+    <?php foreach ($pages as $page): ?>
+        <?php if ($page): ?>
+            <?php if (strtolower($page->getLabel()) != 'hidden'): ?>
+                <?php $subpages     = $page->getPages() ?>
+                <?php $active       = $page->isActive(true) ?>
+                <?php $icon         = $page->get('icon') ?>
+                <?php $hasNonHidden = false ?>
+                <?php foreach ($subpages as $subpage): ?>
+                    <?php if (strtolower($subpage->getLabel()) != 'hidden') $hasNonHidden = true ?>
+                <?php endforeach; ?>
+                <?php $classes = array() ?>
+                <?php if ($active)       $classes[] = 'active' ?>
+                <?php if ($hasNonHidden) $classes[] = 'droplink' ?>
+
+                <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
+                    <a href="<?php echo $page->getHref() ?>">
+                        <span class="menu-icon <?php echo $icon ?>"></span>
+                        <p><?php echo $this->translate($page->getLabel()) ?></p>
+                    </a>
+                    <?php if (count($subpages) && $hasNonHidden): ?>
+                        <ul class="sub-menu">
+                            <?php foreach ($subpages as $subpage): ?>
+                                <?php echo $this->partial('cpanel/main-navigation-subitem.phtml', array('page' => $subpage)) ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </li>
+                <?php unset($classes) ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

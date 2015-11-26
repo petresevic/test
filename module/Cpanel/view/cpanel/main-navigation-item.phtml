@@ -1,0 +1,105 @@
+<?php if ($page): ?>
+    <?php if (strtolower($page->getLabel()) != 'hidden'): ?>
+        <?php $subpages     = $page->getPages() ?>
+        <?php $active       = $page->isActive(true) ?>
+        <?php $icon         = $page->get('icon') ?>
+        <?php $hasNonHidden = false ?>
+        <?php foreach ($subpages as $subpage): ?>
+            <?php if (strtolower($subpage->getLabel()) != 'hidden') $hasNonHidden = true ?>
+        <?php endforeach; ?>
+        <?php $classes = array() ?>
+        <?php if ($active)       $classes[] = 'active' ?>
+        <?php if ($hasNonHidden) $classes[] = 'droplink' ?>
+
+        <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
+            <a href="<?php echo $page->getHref() ?>">
+                <span class="menu-icon <?php echo $icon ?>"></span>
+                <p><?php echo $this->translate($page->getLabel()) ?></p>
+            </a>
+
+        </li>
+
+        <?php unset($classes) ?>
+        <?php /*
+
+
+            <?php if (count($subpages) && $hasNonHidden): ?>
+                <ul>
+                    <?php foreach ($subpages as $subpage): ?>
+                        <?php echo $this->partial('abs-backend-smart/main-navigation-item.phtml', array('page' => $subpage)) ?>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+        */ ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+        <?php /*
+<li class="active">
+    <a href="index.html">
+        <span class="menu-icon icon-speedometer"></span>
+        <p>Dashboard</p>
+    </a>
+</li>
+
+<li class="droplink">
+    <a href="#">
+        <span class="menu-icon icon-folder"></span>
+        <p>Levels</p>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        <li class="droplink">
+            <a href="#">
+                <p>Level 1.1</p>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="droplink">
+                    <a href="#">
+                        <p>Level 2.1</p>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Level 3.1</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Level 2.2</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Level 1.2</a>
+        </li>
+    </ul>
+</li>
+*/ ?>
+
+<?php /*
+<?php if ($page): ?>
+    <?php if (strtolower($page->getLabel()) != 'hidden'): ?>
+        <?php $subpages     = $page->getPages() ?>
+        <?php $active       = $page->isActive(true) ?>
+        <?php $icon         = $page->get('icon') ?>
+        <?php $hasNonHidden = false ?>
+        <?php foreach ($subpages as $subpage): ?>
+            <?php if (strtolower($subpage->getLabel()) != 'hidden') $hasNonHidden = true ?>
+        <?php endforeach; ?>
+        <li<?php if ($active) echo ' class="active"' ?>>
+            <a href="<?php if (count($subpages) && $hasNonHidden) echo '#'; else echo $page->getHref() ?>">
+                <?php if ($icon): ?>
+                    <i class="fa fa-lg fa-fw <?php echo $icon ?>"></i>
+                <?php endif; ?>
+                <span class="menu-item-parent"><?php echo $this->translate($page->getLabel()) ?></span>
+            </a>
+            <?php if (count($subpages) && $hasNonHidden): ?>
+                <ul>
+                    <?php foreach ($subpages as $subpage): ?>
+                        <?php echo $this->partial('abs-backend-smart/main-navigation-item.phtml', array('page' => $subpage)) ?>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </li>
+    <?php endif; ?>
+<?php endif; ?>
+*/ ?>
