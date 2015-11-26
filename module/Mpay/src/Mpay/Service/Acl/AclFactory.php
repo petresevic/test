@@ -10,6 +10,7 @@ class AclFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $service = new Acl();
+        $service->initAcl();
 
         return $service;
     }

@@ -9,6 +9,7 @@ class User implements UserInterface
     protected $id;
     protected $username;
     protected $role;
+    protected $status;
     protected $firstName;
     protected $lastName;
     protected $email;
@@ -41,6 +42,16 @@ class User implements UserInterface
     public function setRole($role)
     {
         $this->role = $role;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     public function getFirstName()

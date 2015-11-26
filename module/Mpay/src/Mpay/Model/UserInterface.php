@@ -21,12 +21,18 @@ interface UserInterface
     const ROLE_IN    = 'IN';
     const ROLE_FEE   = 'FEE';
 
+    const STATUS_ACTIVE      = 'ACTIVE';
+    const STATUS_LOCKED      = 'LOCKED';
+    const STATUS_DEACTIVATED = 'DEACTIVATED';
+
     public function getId();
     public function setId($id);
     public function getUsername();
     public function setUsername($username);
     public function getRole();
     public function setRole($role);
+    public function getStatus();
+    public function setStatus($status);
     public function getFirstName();
     public function setFirstName($firstName);
     public function getLastName();

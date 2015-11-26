@@ -9,6 +9,11 @@
             <?php $user = $this->mpayManager()->getLoggedInUser() ?>
             <pre><?php var_dump($user) ?></pre>
 
+            <hr />
+
+            <?php $t = $this->mpayManager()->getAcl()->isAllowed(\Mpay\Model\UserInterface::ROLE_3U, 'admin') ?>
+            <pre><?php var_dump($t) ?></pre>
+
             <?php /*
             <div class="col-lg-9 col-md-12">
                 <div class="panel panel-white">
