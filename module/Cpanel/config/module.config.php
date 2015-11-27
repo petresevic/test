@@ -86,22 +86,22 @@ return array(
             'cpanel' => array(
                 'label' => 'Cpanel',
                 'route' => 'cpanel',
-                'icon'  => 'icon-plane',
+                'icon'  => ' icon-home',
             ),
             'admin' => array(
                 'label' => 'Admin',
                 'route' => 'cpanel/admin',
-                'icon'  => 'icon-plane',
+                'icon'  => 'icon-user',
             ),
             'accounting' => array(
                 'label' => 'Accounting',
                 'route' => 'cpanel/accounting',
-                'icon'  => 'icon-plane',
+                'icon'  => ' icon-bar-chart',
             ),
             'mcommerce' => array(
                 'label' => 'Mcommerce',
                 'route' => 'cpanel/mcommerce',
-                'icon'  => 'icon-plane',
+                'icon'  => 'icon-wallet',
             ),
         ),
     ),
