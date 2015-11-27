@@ -86,7 +86,7 @@ return array(
             'cpanel' => array(
                 'label' => 'Cpanel',
                 'route' => 'cpanel',
-                'icon'  => ' icon-home',
+                'icon'  => 'icon-home',
             ),
             'admin' => array(
                 'label' => 'Admin',
@@ -96,7 +96,7 @@ return array(
             'accounting' => array(
                 'label' => 'Accounting',
                 'route' => 'cpanel/accounting',
-                'icon'  => ' icon-bar-chart',
+                'icon'  => 'icon-bar-chart',
             ),
             'mcommerce' => array(
                 'label' => 'Mcommerce',
