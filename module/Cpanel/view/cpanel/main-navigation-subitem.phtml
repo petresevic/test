@@ -11,21 +11,23 @@
         <?php if ($active)       $classes[] = 'active' ?>
         <?php if ($hasNonHidden) $classes[] = 'droplink' ?>
 
-        <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
-            <a href="<?php echo $page->getHref() ?>">
-                <p><?php echo $this->translate($page->getLabel()) ?></p>
+        <?php //if ($this->acl->checkAcl($this->manager->getLoggedInUser(), $page->getHref())): ?>
+            <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
+                <a href="<?php echo $page->getHref() ?>">
+                    <p><?php echo $this->translate($page->getLabel()) ?></p>
+                    <?php if (count($subpages) && $hasNonHidden): ?>
+                        <span class="arrow"></span>
+                    <?php endif; ?>
+                </a>
                 <?php if (count($subpages) && $hasNonHidden): ?>
-                    <span class="arrow"></span>
+                    <ul class="sub-menu">
+                        <?php foreach ($subpages as $subpage): ?>
+                            <?php echo $this->partial('cpanel/main-navigation-subitem.phtml', array('page' => $subpage)) ?>
+                        <?php endforeach; ?>
+                    </ul>
                 <?php endif; ?>
-            </a>
-            <?php if (count($subpages) && $hasNonHidden): ?>
-                <ul class="sub-menu">
-                    <?php foreach ($subpages as $subpage): ?>
-                        <?php echo $this->partial('cpanel/main-navigation-subitem.phtml', array('page' => $subpage)) ?>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
-        </li>
+            </li>
+        <?php //endif; ?>
     <?php endif; ?>
 <?php endif; ?>
 

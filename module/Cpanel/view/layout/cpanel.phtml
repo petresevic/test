@@ -308,7 +308,7 @@
             </div><!-- Navbar -->
             <div class="page-sidebar sidebar horizontal-bar">
                 <div class="page-sidebar-inner">
-                    <?php echo $this->partial('cpanel/main-navigation.phtml', array('navigation' => $this->navigation('cpanel-nav'))) ?>
+                    <?php echo $this->partial('cpanel/main-navigation.phtml', array('navigation' => $this->navigation('cpanel-nav'), 'manager' => $this->mpayManager(), 'acl' => $this->mpayManager()->getAcl())) ?>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
             <div class="page-inner">
