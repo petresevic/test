@@ -28,19 +28,26 @@ class Module implements AutoloaderProviderInterface,
     public function onBootstrap(MvcEvent $event)
     {
         $eventManager = $event->getApplication()->getEventManager();
-        $eventManager->attach('dispatch', array($this, 'checkAccess'), 1000);
-        $eventManager->attach('dispatch', array($this, 'setModuleLayout'), 100);
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkAccess'), 1000);
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'setModuleLayout'), 100);
     }
 
     public function checkAccess(MvcEvent $event)
     {
         if ($this->findModuleName($event) === 'Cpanel') {
             $mpayManager = $event->getApplication()->getServiceManager()->get('Mpay\Service\Manager');
+            $routeMatch  = $event->getRouteMatch();
+
             if (! $mpayManager->getAccessToken()) {
-                $routeMatch = $event->getRouteMatch();
                 $routeMatch->setParam('controller', 'Application\Controller\Login');
                 $routeMatch->setParam('action',     'index');
+
+                return;
             }
+
+            $acl = $event->getApplication()->getServiceManager()->get('Mpay\Service\Acl');
+
+            if (! $acl->checkAcl($mpayManager->getLoggedInUser(), $routeMatch)) $acl->denyAccess();
         }
     }
 
@@ -54,7 +61,7 @@ class Module implements AutoloaderProviderInterface,
 
     protected function findModuleName(MvcEvent $event)
     {
-        $matches = $event->getRouteMatch();
+        $matches         = $event->getRouteMatch();
         $controllerClass = $matches->getParam('controller');
         $chunks          = explode('\\', $controllerClass);
 

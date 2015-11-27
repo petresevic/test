@@ -5,10 +5,12 @@ namespace Cpanel\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class ErrorController extends AbstractActionController
 {
-    public function indexAction()
+    public function error403Action()
     {
+        $this->getResponse()->setStatusCode(403);
+
         $viewModel = new ViewModel();
         $viewModel->setVariables(array(
 
