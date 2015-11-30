@@ -13,13 +13,13 @@ class LoginForm extends Form
         $username = new Element\Text('username');
         $username->setAttribute('class', 'form-control');
         $username->setAttribute('placeholder', 'Username');
-        $username->setAttribute('required', true);
+        //$username->setAttribute('required', true);
         $this->add($username);
 
         $password = new Element\Password('password');
         $password->setAttribute('class', 'form-control');
         $password->setAttribute('placeholder', 'Password');
-        $password->setAttribute('required', true);
+        //$password->setAttribute('required', true);
         $this->add($password);
     }
 

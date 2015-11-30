@@ -41,6 +41,7 @@ class Manager implements ManagerInterface,
         $this->getCache()->set($this->getCache()->getUserCachePrefix() . $this->getSessionId(), null);
     }
 
+    /** @return \Mpay\Service\Acl\Acl */
     public function getAcl()
     {
         return $this->acl;
@@ -51,6 +52,7 @@ class Manager implements ManagerInterface,
         $this->acl = $acl;
     }
 
+    /** @return \Mpay\Service\Cache\Cache */
     public function getCache()
     {
         return $this->cache;
@@ -61,6 +63,7 @@ class Manager implements ManagerInterface,
         $this->cache = $cache;
     }
 
+    /** @return \Mpay\Service\Connector\Connector */
     public function getConnector()
     {
         return $this->connector;

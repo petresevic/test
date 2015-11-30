@@ -5,10 +5,11 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class RegisterController extends AbstractActionController {
-
+class RegisterController extends AbstractActionController
+{
+    protected $mpayManager;
     protected $registerForm;
-    
+
     public function indexAction()
     {
         $this->layout('layout/login');
@@ -16,14 +17,22 @@ class RegisterController extends AbstractActionController {
         $form = $this->getRegisterForm();
 
         if ($this->getRequest()->isPost()) {
-            $form->setData($this->getRequest()->getPost());
-            if ($form->isValid()) {
-                $data = $form->getData();
+            $postValues = $this->getRequest()->getPost();
+            $form->setData($postValues);
 
-                echo '<pre>';
-                var_dump($data);
-                exit;
-                echo '</pre>';
+            if ($form->isValid()) {
+                $data           = $form->getData();
+                $registerResult = $this->getMpayManager()->getConnector()->userRegister($data);
+
+                if ($registerResult['success']) {
+                    $activateResult = $this->getMpayManager()->getConnector()->userSetStatus($data['username']);
+
+                    //echo '<pre>'; var_dump($activateResult); exit;
+                } else {
+                    foreach ($registerResult['error'] as $element => $message) {
+                        $form->get($element)->setMessages(array($message));
+                    }
+                }
             }
         }
 
@@ -31,7 +40,17 @@ class RegisterController extends AbstractActionController {
             'form' => $form,
         ));
     }
-    
+
+    /** @return \Mpay\Service\Manager\Manager */
+    public function getMpayManager()
+    {
+        if (null === $this->mpayManager) {
+            $this->mpayManager = $this->getServiceLocator()->get('Mpay\Service\Manager');
+        }
+
+        return $this->mpayManager;
+    }
+
     public function getRegisterForm()
     {
         if (! $this->registerForm) {
@@ -39,5 +58,5 @@ class RegisterController extends AbstractActionController {
         }
 
         return $this->registerForm;
-    }    
+    }
 }

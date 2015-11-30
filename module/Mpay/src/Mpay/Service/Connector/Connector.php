@@ -4,6 +4,7 @@ namespace Mpay\Service\Connector;
 
 use Zend\Http\Request;
 use Zend\Stdlib\Hydrator\ClassMethods;
+use Mpay\Model\UserInterface;
 use Mpay\Model\Entity\User;
 
 class Connector implements ConnectorInterface
@@ -54,7 +55,7 @@ class Connector implements ConnectorInterface
 
         if ($response->isOk()) {
             $data = $this->formatResponse($response->getBody());
-
+            echo '<pre>'; var_dump($data); exit;
             if (isset($data['user'])) {
                 $data     = $data['user'];
                 $hydrator = new ClassMethods();
@@ -67,6 +68,81 @@ class Connector implements ConnectorInterface
         }
 
         return null;
+    }
+
+    public function userRegister($data)
+    {
+        $postParams = array();
+        if (isset($data['username']))   $postParams['userName']  = $data['username'];
+        if (isset($data['password']))   $postParams['password']  = $data['password'];
+        if (isset($data['email']))      $postParams['eMail']     = $data['email'];
+        if (isset($data['first_name'])) $postParams['firstName'] = $data['first_name'];
+        if (isset($data['last_name']))  $postParams['lastName']  = $data['last_name'];
+
+        $params = array(
+            'method'           => Request::METHOD_POST,
+            'path_url'         => '/register',
+            'use_oauth_params' => true,
+            'params'           => $postParams,
+        );
+
+        $result   = array('success' => false);
+        $response = $this->connect($params);
+
+        if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
+
+            if (isset($data['error'])) {
+                $result['error'] = array();
+                if (isset($data['error']['errors']) && count($data['error']['errors'])) {
+                    foreach ($data['error']['errors'] as $key => $value) {
+                        if ($key === 'userName') {
+                            $result['error']['username'] = $value['message'];
+                        } else if ($key === 'eMail') {
+                            $result['error']['email'] = $value['message'];
+                        }
+                    }
+                }
+
+                return $result;
+            }
+
+            if (isset($data['success']) && $data['success']) {
+                $result['success'] = true;
+                if (isset($data['id'])) {
+                    $result['data']       = array();
+                    $result['data']['id'] = $data['id'];
+                }
+
+                return $result;
+            }
+        }
+
+        return $result;
+    }
+
+    public function userSetStatus($username, $status = User::STATUS_ACTIVE)
+    {
+        if ($status === UserInterface::STATUS_ACTIVE)      $urlSuffix = 'activate';
+        if ($status === UserInterface::STATUS_DEACTIVATED) $urlSuffix = 'deactivate';
+        if ($status === UserInterface::STATUS_LOCKED)      $urlSuffix = 'lock';
+
+        $params = array(
+            'method'           => Request::METHOD_PUT,
+            'path_url'         => '/users/' . $username . '/state/' . $urlSuffix,
+            //'use_oauth_params' => true,
+        );
+
+        $result   = array('success' => false);
+        $response = $this->connect($params);
+
+        if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
+
+            echo '<pre>'; var_dump($data); exit;
+        }
+
+        return $result;
     }
 
     public function connect(array $options = array())

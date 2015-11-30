@@ -15,7 +15,7 @@
                 <?php if ($active)       $classes[] = 'active' ?>
                 <?php if ($hasNonHidden) $classes[] = 'droplink' ?>
 
-                <?php //if ($this->acl->checkAcl($this->manager->getLoggedInUser(), $page->getHref())): ?>
+                <?php if (! $this->useAcl || $this->acl->checkAcl($this->manager->getLoggedInUser(), $page->getHref())): ?>
                     <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
                         <a href="<?php echo $page->getHref() ?>">
                             <span class="menu-icon <?php echo $icon ?>"></span>
@@ -24,12 +24,12 @@
                         <?php if (count($subpages) && $hasNonHidden): ?>
                             <ul class="sub-menu">
                                 <?php foreach ($subpages as $subpage): ?>
-                                    <?php echo $this->partial('cpanel/main-navigation-subitem.phtml', array('page' => $subpage, 'manager' => $this->manager, 'acl' => $this->acl)) ?>
+                                    <?php echo $this->partial('cpanel/main-navigation-subitem.phtml', array('page' => $subpage, 'manager' => $this->manager, 'acl' => $this->acl, 'useAcl' => $this->useAcl)) ?>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>
                     </li>
-                <?php //endif; ?>
+                <?php endif; ?>
                 <?php unset($classes) ?>
             <?php endif; ?>
         <?php endif; ?>

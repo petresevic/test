@@ -11,7 +11,7 @@
         <?php if ($active)       $classes[] = 'active' ?>
         <?php if ($hasNonHidden) $classes[] = 'droplink' ?>
 
-        <?php //if ($this->acl->checkAcl($this->manager->getLoggedInUser(), $page->getHref())): ?>
+        <?php if (! $this->useAcl || $this->acl->checkAcl($this->manager->getLoggedInUser(), $page->getHref())): ?>
             <li<?php if (count($classes)) echo ' class="' . implode(' ', $classes) . '"' ?>>
                 <a href="<?php echo $page->getHref() ?>">
                     <p><?php echo $this->translate($page->getLabel()) ?></p>
@@ -27,7 +27,7 @@
                     </ul>
                 <?php endif; ?>
             </li>
-        <?php //endif; ?>
+        <?php endif; ?>
     <?php endif; ?>
 <?php endif; ?>
 
