@@ -37,11 +37,13 @@ class Acl extends ZendAcl implements AclInterface,
         $this->addResource('cpanel.admin.read');
         $this->addResource('cpanel.accounting.read');
         $this->addResource('cpanel.mcommerce.read');
+        $this->addResource('cpanel.user.read');
 
         $this->allow(UserInterface::ROLE_ADM, 'cpanel.index.read');
         $this->allow(UserInterface::ROLE_ADM, 'cpanel.admin.read');
         $this->allow(UserInterface::ROLE_ADM, 'cpanel.accounting.read');
-        //$this->allow(UserInterface::ROLE_ADM, 'cpanel.mcommerce.read');
+        $this->allow(UserInterface::ROLE_ADM, 'cpanel.mcommerce.read');
+        $this->allow(UserInterface::ROLE_ADM, 'cpanel.user.read');
 
         $this->allow(UserInterface::ROLE_S, 'cpanel.index.read');
     }

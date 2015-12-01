@@ -121,6 +121,42 @@ class Connector implements ConnectorInterface
         return $result;
     }
 
+    public function userSearch($accessToken)
+    {
+        $params = array(
+            'method'   => Request::METHOD_GET,
+            'path_url' => '/users',
+            'params'   => array(
+                'access_token' => $accessToken,
+            ),
+        );
+
+        $result   = array('success' => false, 'data' => array());
+        $response = $this->connect($params);
+        $users    = array();
+
+        if ($response->isOk()) {
+            $data = $this->formatResponse($response->getBody());
+
+            if (isset($data['users'])) {
+                if (is_array($data['users']) && count($data['users'])) {
+                    $hydrator = new ClassMethods();
+                    foreach ($data['users'] as $userDataArray) {
+                        $user = $hydrator->hydrate($userDataArray, new User());
+                        if ($user->getId() && $user->getUsername()) {
+                            $users[] = $user;
+                        }
+                    }
+                }
+            }
+
+            $result['success'] = true;
+        }
+        $result['data']['users'] = $users;
+
+        return $result;
+    }
+
 //    public function userSetStatus($username, $status = User::STATUS_ACTIVE)
 //    {
 //        if ($status === UserInterface::STATUS_ACTIVE)      $urlSuffix = 'activate';

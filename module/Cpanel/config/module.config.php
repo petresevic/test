@@ -9,6 +9,7 @@ return array(
             'Cpanel\Controller\Admin'      => 'Cpanel\Controller\AdminController',
             'Cpanel\Controller\Accounting' => 'Cpanel\Controller\AccountingController',
             'Cpanel\Controller\Mcommerce'  => 'Cpanel\Controller\McommerceController',
+            'Cpanel\Controller\User'       => 'Cpanel\Controller\UserController',
             'Cpanel\Controller\Error'      => 'Cpanel\Controller\ErrorController',
         ),
     ),
@@ -38,6 +39,19 @@ return array(
                             'defaults' => array(
                                 'controller' => 'Cpanel\Controller\Admin',
                                 'action'     => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes'  => array(
+                            'user' => array(
+                                'type'    => 'Literal',
+                                'options' => array(
+                                    'route'    => '/users',
+                                    'defaults' => array(
+                                        'controller' => 'Cpanel\Controller\User',
+                                        'action'     => 'index',
+                                    ),
+                                ),
                             ),
                         ),
                     ),
@@ -97,6 +111,12 @@ return array(
                 'label' => 'Admin',
                 'route' => 'cpanel/admin',
                 'icon'  => 'icon-user',
+                'pages' => array(
+                    'user' => array(
+                        'label' => 'Users',
+                        'route' => 'cpanel/admin/user',
+                    ),
+                ),
             ),
             'accounting' => array(
                 'label' => 'Accounting',

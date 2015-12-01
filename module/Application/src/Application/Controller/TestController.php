@@ -11,6 +11,8 @@ class TestController extends AbstractActionController
 
     public function indexAction()
     {
+        $this->getMpayManager()->getConnector()->userSearch($this->getMpayManager()->getAccessToken());
+
         $viewModel = new ViewModel();
         $viewModel->setVariables(array(
             //'result' => $result,
