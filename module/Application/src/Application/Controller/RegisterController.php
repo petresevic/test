@@ -25,9 +25,17 @@ class RegisterController extends AbstractActionController
                 $registerResult = $this->getMpayManager()->getConnector()->userRegister($data);
 
                 if ($registerResult['success']) {
-                    //$activateResult = $this->getMpayManager()->getConnector()->userSetStatus($data['username']);
+                    $accessToken = $this->getMpayManager()->getConnector()->userLogin($data['username'], $data['password']);
+                        if ($accessToken) {
+                        $user = $this->getMpayManager()->getConnector()->userProfile($data['username'], $accessToken);
+                        if ($user && $user->getId()) {
+                            $this->getMpayManager()->userLogin($user, $accessToken);
 
-                    //echo '<pre>'; var_dump($activateResult); exit;
+                            $this->flashMessenger()->setNamespace('success')->addMessage('Your account is successfully created');
+
+                            return $this->redirect()->toRoute('cpanel');
+                        }
+                    }
                 } else {
                     foreach ($registerResult['error'] as $element => $message) {
                         $form->get($element)->setMessages(array($message));
