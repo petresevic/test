@@ -1,0 +1,48 @@
+<?php $flashMessenger = $this->cpanelFlashMessenger() ?>
+
+<script language="JavaScript">
+    window.cpanel                     = window.cpanel                     || {};
+    window.cpanel.flashMessenger      = window.cpanel.flashMessenger      || {};
+    window.cpanel.flashMessenger.init = window.cpanel.flashMessenger.init || [];
+
+    <?php $messages = $flashMessenger->getMessages() ?>
+    <?php foreach ($messages as $message): ?>
+        cpanel.flashMessenger.push({
+            type:    'info',
+            title:   '<?php echo $this->translate('Info') ?>',
+            message: '<?php echo $this->translate($message) ?>'
+        });
+    <?php endforeach; ?>
+
+    <?php $flashMessenger->setNamespace('notice') ?>
+    <?php $messages = $flashMessenger->getMessages() ?>
+    <?php foreach ($messages as $message): ?>
+        cpanel.flashMessenger.init.push({
+            type:    'notice',
+            title:   '<?php echo $this->translate('Notice') ?>',
+            message: '<?php echo $this->translate($message) ?>'
+        });
+    <?php endforeach; ?>
+
+    <?php $flashMessenger->setNamespace('error') ?>
+    <?php $messages = $flashMessenger->getMessages() ?>
+    <?php foreach ($messages as $message): ?>
+        cpanel.flashMessenger.init.push({
+            type:    'error',
+            title:   '<?php echo $this->translate('Error') ?>',
+            message: '<?php echo $this->translate($message) ?>'
+        });
+    <?php endforeach; ?>
+
+    <?php $flashMessenger->setNamespace('success') ?>
+    <?php $messages = $flashMessenger->getMessages() ?>
+    <?php foreach ($messages as $message): ?>
+        cpanel.flashMessenger.init.push({
+            type:    'success',
+            title:   '<?php echo $this->translate('Success') ?>',
+            message: '<?php echo $this->translate($message) ?>'
+        });
+    <?php endforeach; ?>
+</script>
+
+

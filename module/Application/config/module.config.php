@@ -72,6 +72,16 @@ return array(
                     ),
                 ),
             ),
+            'test-flash' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/test-flash',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Test',
+                        'action'     => 'flash',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(

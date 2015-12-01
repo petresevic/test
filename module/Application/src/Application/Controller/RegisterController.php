@@ -25,7 +25,7 @@ class RegisterController extends AbstractActionController
                 $registerResult = $this->getMpayManager()->getConnector()->userRegister($data);
 
                 if ($registerResult['success']) {
-                    $activateResult = $this->getMpayManager()->getConnector()->userSetStatus($data['username']);
+                    //$activateResult = $this->getMpayManager()->getConnector()->userSetStatus($data['username']);
 
                     //echo '<pre>'; var_dump($activateResult); exit;
                 } else {

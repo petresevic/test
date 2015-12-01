@@ -55,7 +55,7 @@ class Connector implements ConnectorInterface
 
         if ($response->isOk()) {
             $data = $this->formatResponse($response->getBody());
-            echo '<pre>'; var_dump($data); exit;
+
             if (isset($data['user'])) {
                 $data     = $data['user'];
                 $hydrator = new ClassMethods();
@@ -121,29 +121,29 @@ class Connector implements ConnectorInterface
         return $result;
     }
 
-    public function userSetStatus($username, $status = User::STATUS_ACTIVE)
-    {
-        if ($status === UserInterface::STATUS_ACTIVE)      $urlSuffix = 'activate';
-        if ($status === UserInterface::STATUS_DEACTIVATED) $urlSuffix = 'deactivate';
-        if ($status === UserInterface::STATUS_LOCKED)      $urlSuffix = 'lock';
-
-        $params = array(
-            'method'           => Request::METHOD_PUT,
-            'path_url'         => '/users/' . $username . '/state/' . $urlSuffix,
-            //'use_oauth_params' => true,
-        );
-
-        $result   = array('success' => false);
-        $response = $this->connect($params);
-
-        if ($response->isOk()) {
-            $data = $this->formatResponse($response->getBody());
-
-            echo '<pre>'; var_dump($data); exit;
-        }
-
-        return $result;
-    }
+//    public function userSetStatus($username, $status = User::STATUS_ACTIVE)
+//    {
+//        if ($status === UserInterface::STATUS_ACTIVE)      $urlSuffix = 'activate';
+//        if ($status === UserInterface::STATUS_DEACTIVATED) $urlSuffix = 'deactivate';
+//        if ($status === UserInterface::STATUS_LOCKED)      $urlSuffix = 'lock';
+//
+//        $params = array(
+//            'method'           => Request::METHOD_PUT,
+//            'path_url'         => '/users/' . $username . '/state/' . $urlSuffix,
+//            //'use_oauth_params' => true,
+//        );
+//
+//        $result   = array('success' => false);
+//        $response = $this->connect($params);
+//
+//        if ($response->isOk()) {
+//            $data = $this->formatResponse($response->getBody());
+//
+//            echo '<pre>'; var_dump($data); exit;
+//        }
+//
+//        return $result;
+//    }
 
     public function connect(array $options = array())
     {

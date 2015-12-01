@@ -5,6 +5,9 @@ namespace Cpanel;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\MvcEvent;
+use Zend\Session\SessionManager;
+use Zend\Session\Container;
+use Zend\Session\Config\SessionConfig;
 
 class Module implements AutoloaderProviderInterface,
                         ConfigProviderInterface
@@ -28,8 +31,19 @@ class Module implements AutoloaderProviderInterface,
     public function onBootstrap(MvcEvent $event)
     {
         $eventManager = $event->getApplication()->getEventManager();
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'sessionSTart'), 9000);
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'checkAccess'), 1000);
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'setModuleLayout'), 100);
+    }
+
+    public function sessionStart(MvcEvent $event)
+    {
+        $sessionConfig = new SessionConfig();
+        $sessionConfig->setOptions(array());
+
+        $sessionManager = new SessionManager($sessionConfig);
+        $sessionManager->start();
+        Container::setDefaultManager($sessionManager);
     }
 
     public function checkAccess(MvcEvent $event)

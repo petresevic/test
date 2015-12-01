@@ -30,6 +30,16 @@ class TestController extends AbstractActionController
         return $viewModel;
     }
 
+    public function flashAction()
+    {
+        $this->flashMessenger()->setNamespace('success')->addMessage('Item saved');
+        $this->flashMessenger()->setNamespace('error')->addMessage('Item not saved');
+
+        $viewModel = new ViewModel();
+
+        return $viewModel;
+    }
+
     /** @return \Mpay\Service\Manager\Manager */
     public function getMpayManager()
     {

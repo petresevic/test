@@ -42,6 +42,8 @@ class Acl extends ZendAcl implements AclInterface,
         $this->allow(UserInterface::ROLE_ADM, 'cpanel.admin.read');
         $this->allow(UserInterface::ROLE_ADM, 'cpanel.accounting.read');
         //$this->allow(UserInterface::ROLE_ADM, 'cpanel.mcommerce.read');
+
+        $this->allow(UserInterface::ROLE_S, 'cpanel.index.read');
     }
 
     public function checkAcl(UserInterface $user, $routeMatchOrUrl)

@@ -308,7 +308,7 @@
             </div><!-- Navbar -->
             <div class="page-sidebar sidebar horizontal-bar">
                 <div class="page-sidebar-inner">
-                    <?php echo $this->partial('cpanel/main-navigation.phtml', array('navigation' => $this->navigation('cpanel-nav'), 'manager' => $this->mpayManager(), 'acl' => $this->mpayManager()->getAcl(), 'useAcl' => false)) ?>
+                    <?php echo $this->partial('cpanel/main-navigation.phtml', array('navigation' => $this->navigation('cpanel-nav'), 'manager' => $this->mpayManager(), 'acl' => $this->mpayManager()->getAcl(), 'useAcl' => true)) ?>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
             <div class="page-inner">
@@ -398,8 +398,9 @@
         */?>
         <div class="cd-overlay"></div>
 
-        <!-- Javascripts -->
+        <?php echo $this->partial('cpanel/flash-messenger.phtml') ?>
 
+        <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/flash-messenger.js')) ?>
         <?php //$this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/pages/dashboard.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/js/modern.min.js')) ?>
         <?php $this->headScript()->prependFile($this->basePath('cpanel-assets/assets/plugins/metrojs/MetroJs.min.js')) ?>

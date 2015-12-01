@@ -81,6 +81,11 @@ return array(
             'cpanel/layout/cpanel' => __DIR__ . '/../view/layout/cpanel.phtml',
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'cpanelFlashMessenger' => 'Cpanel\View\Helper\FlashMessenger',
+        ),
+    ),
     'navigation' => array(
         'cpanel' => array(
             'cpanel' => array(
