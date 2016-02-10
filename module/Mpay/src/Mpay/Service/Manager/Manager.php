@@ -41,6 +41,11 @@ class Manager implements ManagerInterface,
         $this->getCache()->set($this->getCache()->getUserCachePrefix() . $this->getSessionId(), null);
     }
 
+    public function test()
+    {
+    
+    }
+
     /** @return \Mpay\Service\Acl\Acl */
     public function getAcl()
     {
