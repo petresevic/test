@@ -8,8 +8,8 @@
     ],
     "homepage": "http://framework.zend.com/",
     "require": {
-        "php": ">=5.4",
-        "zendframework/zendframework": "2.x@stable",
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3@stable",
         "zendframework/zend-developer-tools": "@beta"
     }
 }
