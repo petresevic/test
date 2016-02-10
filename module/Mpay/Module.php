@@ -51,4 +51,7 @@ class Module implements AutoloaderProviderInterface,
             ),
         );
     }
+    
+    public function jajosh()
+    {
 }
